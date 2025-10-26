@@ -1,22 +1,53 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
+import { defaultSEO, type SEOConfig } from '../config/seoConfig';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  seo?: Partial<SEOConfig>;
+}
+
+const { seo } = Astro.props;
+const mergedSEO = {
+  ...defaultSEO,
+  ...seo,
+  og: { ...defaultSEO.og, ...seo?.og },
+  twitter: { ...defaultSEO.twitter, ...seo?.twitter },
+};
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{mergedSEO.title}</title>
+    <meta name="description" content={mergedSEO.description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content={mergedSEO.og?.type || 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={mergedSEO.og?.title || mergedSEO.title} />
+    <meta property="og:description" content={mergedSEO.og?.description || mergedSEO.description} />
+    {mergedSEO.og?.image && <meta property="og:image" content={mergedSEO.og.image} />}
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content={mergedSEO.twitter?.card || 'summary_large_image'} />
+    {mergedSEO.twitter?.site && <meta name="twitter:site" content={mergedSEO.twitter.site} />}
+    {mergedSEO.twitter?.creator && <meta name="twitter:creator" content={mergedSEO.twitter.creator} />}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Fonts Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

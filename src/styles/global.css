@@ -1,0 +1,92 @@
+/* Importar fuentes - DEBE IR PRIMERO */
+@import "@fontsource/work-sans/400.css";
+@import "@fontsource/work-sans/500.css";
+@import "@fontsource/work-sans/600.css";
+@import "@fontsource/work-sans/700.css";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-padding-top: 4rem;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-text-primary antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-primary text-white font-heading font-medium text-lg transition-all hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-primary-500 text-primary-500 font-heading font-medium text-lg transition-all hover:bg-primary-500 hover:text-white;
+  }
+
+  .ccontainer {
+    @apply w-full lg:max-w-[1280px] xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-8 md:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-background-secondary border border-gray-200/15 rounded-2xl p-6 transition-all hover:shadow-lg;
+  }
+
+  .swiper {
+    & .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
+
+  .swiper-parent-cursos {
+    & .button-custom-prev,
+    .button-custom-next {
+      @apply grid place-items-center -mx-8 sm:-mx-10;
+      /* @apply bg-[rgba(255,255,255,0.4)] hover:bg-white text-black rounded-full; */
+      @apply bg-[rgba(255,255,255,0.8)] hover:bg-white text-black rounded-full  border border-gray-100/20 shadow-md;
+    }
+
+    & .button-custom-prev::after,
+    .button-custom-next::after {
+      @apply font-bold text-lg;
+    }
+
+    & .button-custom-prev {
+      @apply absolute top-1/2 left-2 z-50 transform -translate-y-1/2;
+    }
+
+    & .button-custom-next {
+      @apply absolute top-1/2 right-2 z-50 transform -translate-y-1/2;
+    }
+
+    & .button-custom-prev,
+    .button-custom-next {
+      @apply w-12 h-12 lg:w-12 lg:h-12;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
