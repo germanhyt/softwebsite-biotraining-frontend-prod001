@@ -1,5 +1,5 @@
 {
-  "name": "softwebsite-biotraining-refugio-prod001",
+  "name": "softwebsite-biotraining-frontend-prod001",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,23 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.1"
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/work-sans": "^5.2.8",
+    "astro": "^5.15.1",
+    "framer-motion": "^12.23.24",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "resend": "^6.2.2",
+    "sweetalert2": "^11.26.3",
+    "swiper": "^12.0.3",
+    "tailwindcss": "^3.4.18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "typescript": "^5.9.3"
   }
 }

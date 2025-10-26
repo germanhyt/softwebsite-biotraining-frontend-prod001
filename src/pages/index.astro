@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Features from '../components/Features';
+import Courses from '../components/Courses';
+import Testimonials from '../components/Testimonials';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// SEO personalizado para la página de inicio
+const seo = {
+  title: 'Inicio',
+  description: 'Transforma tu futuro profesional con BioTraining. Cursos especializados de capacitación profesional con los mejores instructores.',
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout seo={seo}>
+  <Header client:load />
+  <main>
+    <Hero client:load />
+    <Features client:load />
+    <Courses client:load />
+    <Testimonials client:load />
+    <Contact client:load />
+  </main>
+  <Footer client:load />
 </Layout>

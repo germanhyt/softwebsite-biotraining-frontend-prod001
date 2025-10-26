@@ -1,22 +1,69 @@
+---
+import { getPageSEO, type PageSEO } from '../config/seoConfig';
+import '../styles/global.css';
+
+interface Props {
+  seo?: PageSEO;
+}
+
+const { seo = {} } = Astro.props;
+const pageConfig = getPageSEO(seo);
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{pageConfig.title}</title>
+    <meta name="description" content={pageConfig.description} />
+    <meta name="keywords" content={pageConfig.keywords.join(', ')} />
+    <meta name="author" content={pageConfig.author} />
+    
+    {pageConfig.noindex && <meta name="robots" content="noindex" />}
+    {pageConfig.nofollow && <meta name="robots" content="nofollow" />}
+    {pageConfig.canonical && <link rel="canonical" href={pageConfig.canonical} />}
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageConfig.siteUrl} />
+    <meta property="og:title" content={pageConfig.title} />
+    <meta property="og:description" content={pageConfig.description} />
+    <meta property="og:image" content={pageConfig.ogImage} />
+    <meta property="og:site_name" content={pageConfig.siteName} />
+    <meta property="og:locale" content={pageConfig.locale} />
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content={pageConfig.twitterCard} />
+    <meta name="twitter:url" content={pageConfig.siteUrl} />
+    <meta name="twitter:title" content={pageConfig.title} />
+    <meta name="twitter:description" content={pageConfig.description} />
+    <meta name="twitter:image" content={pageConfig.ogImage} />
+    {pageConfig.twitterSite && <meta name="twitter:site" content={pageConfig.twitterSite} />}
+    {pageConfig.twitterCreator && <meta name="twitter:creator" content={pageConfig.twitterCreator} />}
+  </head>
+  <body class="antialiased bg-white text-gray-900">
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
 </style>
+
