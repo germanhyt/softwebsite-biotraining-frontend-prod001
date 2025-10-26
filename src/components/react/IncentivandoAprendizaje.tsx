@@ -6,7 +6,7 @@ const IncentivandoAprendizaje: React.FC = () => {
   return (
     <section id="conocenos" className="py-20 bg-white">
       <div className="ccontainer">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-[52rem] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-[56rem] mx-auto">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

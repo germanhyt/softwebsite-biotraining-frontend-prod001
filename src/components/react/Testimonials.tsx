@@ -69,7 +69,7 @@ const Testimonials: React.FC = () => {
   }, []);
 
   return (
-    <section className="pt-20 bg-background-primary">
+    <section className="py-20 bg-background-primary">
       <div className="ccontainer">
         {/* Header */}
         <motion.div

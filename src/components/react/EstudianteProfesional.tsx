@@ -4,7 +4,7 @@ import estudianteImage from '../../assets/img/section-estudiante-o-profesional.w
 
 const EstudianteProfesional: React.FC = () => {
   return (
-    <section className=" pt-24 md:pt-64 lg:pt-72 bg-white">
+    <section className="pt-24 md:pt-64 lg:pt-72 lg:pb-20 bg-white">
       <div className="ccontainer">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Image */}

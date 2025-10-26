@@ -71,7 +71,7 @@ const Benefits: React.FC = () => {
                 <img
                   src={benefit.image.src}
                   alt={benefit.title}
-                  className="w-52 h-52 object-contain"
+                  className="w-72 h-72 object-contain"
                 />
               </div>
 
