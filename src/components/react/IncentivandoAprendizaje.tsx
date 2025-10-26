@@ -4,7 +4,7 @@ import incentivoImg from '../../assets/img/section-incentivando-aprendizaje.webp
 
 const IncentivandoAprendizaje: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section id="conocenos" className="py-20 bg-white">
       <div className="ccontainer">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-[52rem] mx-auto">
           {/* Left Content */}

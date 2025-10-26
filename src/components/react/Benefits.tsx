@@ -41,7 +41,7 @@ const benefits: Benefit[] = [
 
 const Benefits: React.FC = () => {
   return (
-    <section className="py-20">
+    <section id='beneficios' className="py-20">
       <div className="ccontainer">
         {/* Header */}
         <motion.div

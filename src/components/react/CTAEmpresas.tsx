@@ -17,7 +17,7 @@ const CTAEmpresas: React.FC = () => {
       </div> */}
 
       {/* Content */}
-      <section className="ccontainer mx-auto overflow-hidden py-20">
+      <section id="empresas" className="ccontainer mx-auto overflow-hidden py-20">
         <div className='relative z-10 py-16 md:py-20 lg:py-24 pl-10 '>
           <div className='absolute inset-0 z-0'>
             <img
