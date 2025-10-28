@@ -32,7 +32,7 @@ const Partners: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-white">
       <div className="ccontainer">
         {/* Header */}
         <motion.div
@@ -41,10 +41,10 @@ const Partners: React.FC = () => {
           viewport={{ once: true }}
           className="max-w-[52rem] mx-auto text-center mb-12"
         >
-          <h2 className=" text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-2">
+          <h2 className="text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-2">
             Nuestros aliados estratégicos
           </h2>
-          <p className=" text-text-secondary">
+          <p className="text-text-secondary">
             Colaboramos con instituciones comprometidas con la excelencia científica y la formación de profesionales altamente capacitados en biotecnología y ciencias de la salud.
           </p>
         </motion.div>

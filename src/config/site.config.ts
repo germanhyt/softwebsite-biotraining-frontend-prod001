@@ -19,5 +19,7 @@ export const siteConfig = {
     { name: 'Cursos', href: '#cursos' },
     { name: 'Conócenos', href: '#conocenos' },
     { name: 'Cursos para empresas', href: '#empresas' },
+    // contacto
+    { name: 'Contacto', href: '#contacto' }
   ],
 };

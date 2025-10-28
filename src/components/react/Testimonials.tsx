@@ -24,21 +24,21 @@ const testimonials: Testimonial[] = [
   },
   {
     id: '2',
-    name: 'Carlos Mendoza',
-    role: 'Biotecnólogo en Instituto Nacional de Salud.',
-    content: 'Los cursos de Biotraining me ayudaron a conseguir mi trabajo actual. La metodología práctica y los docentes expertos hacen la diferencia.',
+    name: 'Nancy Castillo',
+    role: 'Egresada de Biología en la facultad de UNMSM.',
+    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
   },
   {
     id: '3',
-    name: 'María Gonzales',
-    role: 'Estudiante de Biotecnología - UNALM.',
-    content: 'Excelente inversión para mi formación. Ahora manejo equipos y técnicas que antes solo veía en papers. Súper recomendado.',
+    name: 'Nancy Castillo',
+    role: 'Egresada de Biología en la facultad de UNMSM.',
+    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
   },
   {
     id: '4',
-    name: 'Jorge Ramírez',
-    role: 'Investigador en UPCH.',
-    content: 'La calidad de los contenidos y el seguimiento personalizado superaron mis expectativas. Definitivamente volveré a tomar otro curso.',
+    name: 'Nancy Castillo',
+    role: 'Egresada de Biología en la facultad de UNMSM.',
+    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
   },
 ];
 
@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
       setShowButtons(true);
     }
   }, []);
-  
+
   const handleMouseLeave = useCallback(() => {
     if (typeof window !== 'undefined' && window.innerWidth >= BREAKPOINTS.TABLET) {
       setShowButtons(false);
@@ -110,24 +110,24 @@ const Testimonials: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 p-6 relative border border-gray-100 h-full"
+                  className="min-h-[24rem] bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 py-6 xl:py-8 px-6 xl:px-6 relative border border-gray-300 h-full"
                 >
                   {/* Quote Icon - Large at top left */}
                   <div className="mb-4">
-                    <span className="text-5xl font-serif text-text-primary leading-none">"</span>
+                    <span className="text-5xl font-serif text-text-primary leading-none">❛❛</span>
                   </div>
 
                   {/* Content */}
-                  <div className="space-y-4">
-                    <p className="text-text-secondary text-sm leading-relaxed min-h-[7rem]">
+                  <div className="space-y-12 sm:space-y-4">
+                    <p className="text-text-primary text-xl leading-relaxed sm:min-h-[7rem] sm:max-w-[18rem]">
                       {testimonial.content}
                     </p>
 
                     <div className="pt-3">
-                      <p className="font-heading font-semibold text-base text-text-primary">
+                      <p className="font-heading font-semibold text-[1.4rem] sm:text-[1rem] 2xl:text-[1.2rem] text-text-primary">
                         {testimonial.name}
                       </p>
-                      <p className="text-text-secondary text-xs mt-1">
+                      <p className="text-text-secondary text-[1rem] max-w-[14rem]  mt-1">
                         {testimonial.role}
                       </p>
                     </div>

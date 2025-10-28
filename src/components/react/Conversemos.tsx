@@ -82,7 +82,7 @@ const Conversemos: React.FC = () => {
         />
       </div>
 
-      <div className="ccontainer relative z-10">
+      <div id='contacto' className="ccontainer relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left Content - Text */}
           <motion.div
