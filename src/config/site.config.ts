@@ -20,6 +20,6 @@ export const siteConfig = {
     { name: 'Conócenos', href: '#conocenos' },
     { name: 'Para empresas', href: '#empresas' },
     // contacto
-    { name: 'Contacto', href: '#contacto' }
+    // { name: 'Contacto', href: '#contacto' }
   ],
 };
