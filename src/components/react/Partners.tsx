@@ -29,7 +29,7 @@ const partners = [
 ];
 
 const Partners: React.FC = () => {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
     <section className="py-16 bg-white">
@@ -59,22 +59,22 @@ const Partners: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="flex items-center justify-center p-6 cursor-pointer"
-              onMouseEnter={() => setHoveredId(partner.id)}
-              onMouseLeave={() => setHoveredId(null)}
+            // onMouseEnter={() => setHoveredId(partner.id)}
+            // onMouseLeave={() => setHoveredId(null)}
             >
               {/* Mobile: always show color version */}
               <img
                 src={partner.logoColor.src}
                 alt={partner.name}
-                className="max-h-48 md:hidden w-auto object-contain transition-all duration-300"
+                className="max-h-48  w-auto object-contain transition-all duration-300"
               />
 
               {/* Desktop: show color on hover, grayscale otherwise */}
-              <img
+              {/* <img
                 src={hoveredId === partner.id ? partner.logoColor.src : partner.logoGris.src}
                 alt={partner.name}
                 className="hidden md:block max-h-36 md:max-h-40 w-auto object-contain transition-all duration-300"
-              />
+              /> */}
             </motion.div>
           ))}
         </div>
