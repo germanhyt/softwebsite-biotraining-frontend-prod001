@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ctaImg from '../../assets/img/section-capacita-equipo_cta.webp';
+import ctaImgMobile from '../../assets/img/section-capacita-equipo_cta-mobile.webp';
 import Button from './Button';
 
 const CTAEmpresas: React.FC = () => {
@@ -18,12 +19,17 @@ const CTAEmpresas: React.FC = () => {
 
       {/* Content */}
       <section id="empresas" className="ccontainer mx-auto overflow-hidden py-20">
-        <div className='relative z-10 py-16 md:py-20 lg:py-24 pl-10 '>
+        <div className='relative z-10 min-h-[42rem] md:min-h-max py-16 md:py-20 lg:py-24 pl-10 '>
           <div className='absolute inset-0 z-0'>
             <img
               src={ctaImg.src}
               alt="Capacitación empresarial"
-              className="w-full h-full object-cover object-center rounded-xl"
+              className="hidden sm:flex w-full h-full object-cover object-center rounded-xl"
+            />
+            <img
+              src={ctaImgMobile.src}
+              alt="Capacitación empresarial"
+              className="flex sm:hidden w-full h-full object-cover object-center rounded-xl"
             />
           </div>
           <div className="relative max-w-2xl lg:max-w-3xl z-20">
@@ -33,8 +39,8 @@ const CTAEmpresas: React.FC = () => {
               viewport={{ once: true }}
               className="max-w-[36rem] text-white space-y-6 lg:space-y-8"
             >
-              <div className='space-y-4'>
-                <h2 className="text-[2rem] sm:text-[2.5rem] xl:text-[3rem] leading-[1.2] font-heading font-semibold ">
+              <div className='space-y-4 pr-5'>
+                <h2 className="text-[1.5rem] sm:text-[2.5rem] xl:text-[3rem] leading-[1.2] font-heading font-semibold ">
                   Capacita a tu equipo y mejora la eficiencia de tu empresa
                 </h2>
 

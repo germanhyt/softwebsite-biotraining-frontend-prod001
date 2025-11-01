@@ -15,10 +15,10 @@ export const siteConfig = {
     whatsapp: '+51969977934',
   },
   navigation: [
-    { name: 'Beneficios', href: '#beneficios' },
+    { name: '¿Por qué elegirnos?', href: '#beneficios' },
     { name: 'Cursos', href: '#cursos' },
     { name: 'Conócenos', href: '#conocenos' },
-    { name: 'Cursos para empresas', href: '#empresas' },
+    { name: 'Para empresas', href: '#empresas' },
     // contacto
     { name: 'Contacto', href: '#contacto' }
   ],

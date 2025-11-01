@@ -27,16 +27,15 @@ const Footer: React.FC = () => {
             <div>
               <h3 className="font-heading font-semibold text-sm mb-4">Explora</h3>
               <ul className="space-y-3">
-                {/* <li><a href="#conocenos" className="text-sm hover:text-primary-300 transition-colors">Descubre Biotraining</a></li>
-              <li><a href="#cursos" className="text-sm hover:text-primary-300 transition-colors">Nuestros cursos</a></li>
-              <li><a href="#nosotros" className="text-sm hover:text-primary-300 transition-colors">Nosotros</a></li>
-              <li><a href="#faq" className="text-sm hover:text-primary-300 transition-colors">Preguntas frecuentes</a></li> */}
-
                 {/* Beneficios, Cursos, Conócenos, Cursos para empresas */}
-                <li><a href="#beneficios" className="text-sm hover:text-primary-300 transition-colors">Beneficios</a></li>
+                <li>
+                  <a href="#beneficios" className="text-sm hover:text-primary-300 transition-colors">
+                    ¿Por qué elegirnos?
+                  </a>
+                </li>
                 <li><a href="#cursos" className="text-sm hover:text-primary-300 transition-colors">Cursos</a></li>
                 <li><a href="#conocenos" className="text-sm hover:text-primary-300 transition-colors">Conócenos</a></li>
-                <li><a href="#empresas" className="text-sm hover:text-primary-300 transition-colors">Cursos para empresas</a></li>
+                <li><a href="#empresas" className="text-sm hover:text-primary-300 transition-colors">Para empresas</a></li>
               </ul>
             </div>
           </div>

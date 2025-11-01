@@ -110,7 +110,7 @@ const Testimonials: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="min-h-[24rem] bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 py-6 xl:py-8 px-6 xl:px-6 relative border border-gray-300 h-full"
+                  className="min-h-[24rem] bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 py-6 xl:py-8 mx-4 md:mx-0 px-8 xl:px-6 relative border border-gray-300 h-full"
                 >
                   {/* Quote Icon - Large at top left */}
                   <div className="mb-4">
@@ -124,10 +124,10 @@ const Testimonials: React.FC = () => {
                     </p>
 
                     <div className="pt-3">
-                      <p className="font-heading font-semibold text-[1.4rem] sm:text-[1rem] 2xl:text-[1.2rem] text-text-primary">
+                      <p className="font-heading font-semibold text-[1.5rem] sm:text-[1rem] 2xl:text-[1.2rem] text-text-primary">
                         {testimonial.name}
                       </p>
-                      <p className="text-text-secondary text-[1rem] max-w-[14rem]  mt-1">
+                      <p className="text-text-secondary text-[1.2rem] max-w-[14rem]  mt-1">
                         {testimonial.role}
                       </p>
                     </div>

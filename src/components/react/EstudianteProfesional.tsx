@@ -17,7 +17,7 @@ const EstudianteProfesional: React.FC = () => {
             <img
               src={estudianteImage.src}
               alt="Estudiante o profesional en biotecnología"
-              className="w-full h-auto rounded-2xl"
+              className="w-full max-w-[28rem] xl:max-w-[34rem] 2xl:max-w-[40rem] h-auto rounded-2xl mx-auto"
             />
           </motion.div>
 

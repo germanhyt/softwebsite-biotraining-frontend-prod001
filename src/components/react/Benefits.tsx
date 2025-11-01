@@ -77,7 +77,7 @@ const Benefits: React.FC = () => {
 
               {/* Content */}
               <div className='space-y-4 px-10'>
-                <h3 className="text-[1.25rem] font-heading font-semibold">
+                <h3 className="text-[1.5rem] sm:text-[1.25rem] font-heading font-semibold">
                   {benefit.title}
                 </h3>
                 <p className="text-[1rem] sm:text-[1.125rem] leading-[1.2]">

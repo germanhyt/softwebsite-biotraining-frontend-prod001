@@ -95,8 +95,7 @@ const Conversemos: React.FC = () => {
               Conversemos
             </h2>
             <p className="text-white/80 text-base lg:text-lg leading-relaxed">
-              Completa este breve formulario y ayúdanos a conocer tus intereses para ayudarnos a dirigir los contenidos de nuestros cursos y capacitaciones a los objetivos que se ajusten mejor a tu perfil profesional.
-            </p>
+              Completa este breve formulario y ayudanos a conocer tus intereses. Tu respuesta nos ayudará a enfocar los contenidos de nuestros cursos y capacitaciones para que se alineen mejor con tus objetivos y perfil profesional. </p>
           </motion.div>
 
           {/* Right Content - Form */}
@@ -137,22 +136,22 @@ const Conversemos: React.FC = () => {
               className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
             />
 
-            <input
-              type="text"
+            <textarea
               name="preference"
               value={formData.preference}
               onChange={handleChange}
               placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
               required
+              rows={2}
               className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
             />
 
-            <input
-              type="text"
+            <textarea
               name="modality"
               value={formData.modality}
               onChange={handleChange}
               placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
+              rows={2}
               required
               className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
             />

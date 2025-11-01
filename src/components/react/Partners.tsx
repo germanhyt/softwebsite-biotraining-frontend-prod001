@@ -41,7 +41,7 @@ const Partners: React.FC = () => {
           viewport={{ once: true }}
           className="max-w-[52rem] mx-auto text-center mb-12"
         >
-          <h2 className="text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-2">
+          <h2 className="text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] leading-[1.2] font-heading font-semibold mb-2">
             Nuestros aliados estratégicos
           </h2>
           <p className="text-text-secondary">
@@ -62,10 +62,18 @@ const Partners: React.FC = () => {
               onMouseEnter={() => setHoveredId(partner.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
+              {/* Mobile: always show color version */}
+              <img
+                src={partner.logoColor.src}
+                alt={partner.name}
+                className="max-h-48 md:hidden w-auto object-contain transition-all duration-300"
+              />
+
+              {/* Desktop: show color on hover, grayscale otherwise */}
               <img
                 src={hoveredId === partner.id ? partner.logoColor.src : partner.logoGris.src}
                 alt={partner.name}
-                className="max-h-36  md:max-h-40 w-auto object-contain transition-all duration-300"
+                className="hidden md:block max-h-36 md:max-h-40 w-auto object-contain transition-all duration-300"
               />
             </motion.div>
           ))}

@@ -97,7 +97,7 @@ const Courses: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16  mx-auto max-w-[28rem]"
         >
-          <h2 className="text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-4">
+          <h2 className="leading-[1.1] text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-4">
             Nuestros cursos especializados
           </h2>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">

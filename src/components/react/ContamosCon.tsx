@@ -17,7 +17,7 @@ const stats: StatItem[] = [
             <img src={iconInstructor.src} alt="Instructor" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
         ),
         title: '',
-        description: 'Instructores con entrevistas publicadas de alto impacto en su línea, que respaldan el dominio de su materia.',
+        description: 'Cada instructor cuenta con entrevistas publicadas de alto impacto en su área, que respaldan el dominio de su materia.',
     },
     {
         id: '2',
@@ -25,7 +25,7 @@ const stats: StatItem[] = [
             <img src={iconGraduated.src} alt="Instructor" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
         ),
         title: '',
-        description: 'Instructores con estudios en el extranjero y reconocimiento en sus áreas respectivas.',
+        description: 'Nuestro equipo cuenta con formación internacional y una sólida trayectoria en sus especialidades.',
     },
     {
         id: '3',
@@ -40,7 +40,7 @@ const stats: StatItem[] = [
 const ContamosCon: React.FC = () => {
     return (
         <section
-            className="mx-auto lg:max-w-4xl xl:max-w-6xl mt-16 md:mt-20"
+            className="mx-auto lg:max-w-5xl xl:max-w-6xl mt-16 md:mt-20"
         >
             <div className="ccontainer">
                 {/* Header */}
