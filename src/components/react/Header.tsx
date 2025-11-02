@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-[999] bg-white shadow-sm transition-all duration-300 py-4"
+      className="fixed top-0 left-0 right-0 z-[888] bg-white shadow-sm transition-all duration-300 py-4"
     >
       <div className="ccontainer">
         <div className="flex items-center justify-between gap-24">

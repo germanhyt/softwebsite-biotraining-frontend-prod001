@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ctaImg from '../../assets/img/section-capacita-equipo_cta.webp';
 import ctaImgMobile from '../../assets/img/section-capacita-equipo_cta-mobile.webp';
 import Button from './Button';
+import EnterpriseContactModal from './EnterpriseContactModal';
 
 const CTAEmpresas: React.FC = () => {
+  const [isEnterpriseModalOpen, setIsEnterpriseModalOpen] = useState(false);
   return (
     <>
       {/* Background Image with Overlay */}
@@ -50,7 +52,7 @@ const CTAEmpresas: React.FC = () => {
               </div>
 
               <div className="pt-2 lg:pt-4">
-                <Button href="#empresas" variant="primary">
+                <Button onClick={() => setIsEnterpriseModalOpen(true)} variant="primary">
                   Más Información
                 </Button>
               </div>
@@ -58,6 +60,12 @@ const CTAEmpresas: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Enterprise Contact Modal */}
+      <EnterpriseContactModal
+        isOpen={isEnterpriseModalOpen}
+        onClose={() => setIsEnterpriseModalOpen(false)}
+      />
     </>
   );
 };

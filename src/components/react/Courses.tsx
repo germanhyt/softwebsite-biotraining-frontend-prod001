@@ -11,6 +11,7 @@ import exploracionImg from '../../assets/img/section-curso_exploracion-analisis.
 import diagnosticoImg from '../../assets/img/section-curso_diagnostico-molecular.webp';
 import Button from './Button';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import StudentContactModal from './StudentContactModal';
 
 interface Course {
   id: string;
@@ -72,6 +73,7 @@ const Courses: React.FC = () => {
     }
     return false;
   });
+  const [isStudentModalOpen, setIsStudentModalOpen] = useState(false);
 
   const handleMouseEnter = useCallback(() => {
     if (typeof window !== 'undefined' && window.innerWidth >= BREAKPOINTS.TABLET) {
@@ -172,7 +174,7 @@ const Courses: React.FC = () => {
                     </p>
                     <div className="w-full flex justify-center pt-4">
                       <Button
-                        href="#"
+                        onClick={() => setIsStudentModalOpen(true)}
                         variant="primary"
                       >
                         Inscríbete
@@ -212,6 +214,12 @@ const Courses: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Student Contact Modal */}
+      <StudentContactModal
+        isOpen={isStudentModalOpen}
+        onClose={() => setIsStudentModalOpen(false)}
+      />
     </section >
   );
 };

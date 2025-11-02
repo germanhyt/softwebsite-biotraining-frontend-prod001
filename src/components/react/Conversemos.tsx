@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
 import Button from './Button';
@@ -12,53 +15,64 @@ interface FormData {
   experience: string;
 }
 
+// Validation schema
+const conversemosSchema = yup.object({
+  name: yup
+    .string()
+    .required('Por favor ingresa tu nombre y apellido')
+    .min(3, 'Debe tener al menos 3 caracteres'),
+  specialty: yup
+    .string()
+    .required('Por favor especifica tu especialidad')
+    .min(2, 'Debe tener al menos 2 caracteres'),
+  occupation: yup
+    .string()
+    .required('Por favor indica tu ocupación actual')
+    .min(3, 'Debe tener al menos 3 caracteres'),
+  preference: yup
+    .string()
+    .required('Por favor comparte tu preferencia de formato')
+    .min(10, 'Debe tener al menos 10 caracteres'),
+  modality: yup
+    .string()
+    .required('Por favor indica tu preferencia de modalidad')
+    .min(10, 'Debe tener al menos 10 caracteres'),
+  experience: yup
+    .string()
+    .required('Por favor describe la experiencia que deseas desarrollar')
+    .min(15, 'Debe tener al menos 15 caracteres'),
+});
+
 const Conversemos: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    specialty: '',
-    occupation: '',
-    preference: '',
-    modality: '',
-    experience: '',
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: yupResolver(conversemosSchema),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Simulate form submission
+      console.log('Conversemos Form Data:', data);
+
+      // Here you would send data to your API
+      // const response = await fetch('/api/send-email', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data),
+      // });
+
+      Swal.fire({
+        title: '¡Mensaje enviado!',
+        text: 'Nos pondremos en contacto contigo pronto.',
+        icon: 'success',
+        confirmButtonColor: '#E1525F',
       });
 
-      if (response.ok) {
-        Swal.fire({
-          title: '¡Mensaje enviado!',
-          text: 'Nos pondremos en contacto contigo pronto.',
-          icon: 'success',
-          confirmButtonColor: '#E1525F',
-        });
-        setFormData({
-          name: '',
-          specialty: '',
-          occupation: '',
-          preference: '',
-          modality: '',
-          experience: '',
-        });
-      } else {
-        throw new Error('Error al enviar');
-      }
+      reset();
     } catch (error) {
       Swal.fire({
         title: 'Error',
@@ -104,74 +118,92 @@ const Conversemos: React.FC = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className="space-y-5"
             >
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Nombres y apellidos"
-                required
-                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-              />
+              {/* Name */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="Nombres y apellidos"
+                  {...register('name')}
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                )}
+              </div>
 
-              <input
-                type="text"
-                name="specialty"
-                value={formData.specialty}
-                onChange={handleChange}
-                placeholder="Especialidad"
-                required
-                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-              />
+              {/* Specialty */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="Especialidad"
+                  {...register('specialty')}
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                />
+                {errors.specialty && (
+                  <p className="text-red-500 text-sm mt-1">{errors.specialty.message}</p>
+                )}
+              </div>
 
-              <input
-                type="text"
-                name="occupation"
-                value={formData.occupation}
-                onChange={handleChange}
-                placeholder="¿Cuál es tu ocupación actual?"
-                required
-                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-              />
+              {/* Occupation */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="¿Cuál es tu ocupación actual?"
+                  {...register('occupation')}
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                />
+                {errors.occupation && (
+                  <p className="text-red-500 text-sm mt-1">{errors.occupation.message}</p>
+                )}
+              </div>
 
-              <textarea
-                name="preference"
-                value={formData.preference}
-                onChange={handleChange}
-                placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
-                required
-                rows={2}
-                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-              />
+              {/* Preference */}
+              <div>
+                <textarea
+                  placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
+                  {...register('preference')}
+                  rows={2}
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                />
+                {errors.preference && (
+                  <p className="text-red-500 text-sm mt-1">{errors.preference.message}</p>
+                )}
+              </div>
 
-              <textarea
-                name="modality"
-                value={formData.modality}
-                onChange={handleChange}
-                placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
-                rows={2}
-                required
-                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-              />
+              {/* Modality */}
+              <div>
+                <textarea
+                  placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
+                  {...register('modality')}
+                  rows={2}
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                />
+                {errors.modality && (
+                  <p className="text-red-500 text-sm mt-1">{errors.modality.message}</p>
+                )}
+              </div>
 
-              <textarea
-                name="experience"
-                value={formData.experience}
-                onChange={handleChange}
-                placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
-                required
-                rows={4}
-                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none transition-all"
-              />
+              {/* Experience */}
+              <div>
+                <textarea
+                  placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
+                  {...register('experience')}
+                  rows={4}
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none transition-all"
+                />
+                {errors.experience && (
+                  <p className="text-red-500 text-sm mt-1">{errors.experience.message}</p>
+                )}
+              </div>
 
               <hr className="border-gray-300 my-4" />
 
               <div className="flex justify-end pt-2">
-                <Button type="submit" variant="primary">
-                  Enviar
+                <Button type="submit" variant="primary" disabled={isSubmitting}>
+                  {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </Button>
               </div>
             </motion.form>

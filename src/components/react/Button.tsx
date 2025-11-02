@@ -8,6 +8,7 @@ interface ButtonProps {
     variant?: 'primary' | 'secondary';
     className?: string;
     type?: 'button' | 'submit' | 'reset';
+    disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,7 +17,8 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
     variant = 'primary',
     className = '',
-    type = 'button'
+    type = 'button',
+    disabled = false,
 }) => {
     const baseStyles = `
     inline-flex items-center justify-center gap-2
@@ -25,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     transition-all duration-300
     hover:scale-[1.02] active:scale-[0.98]
     shadow-lg hover:shadow-xl
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
   `;
 
     const variantStyles = {
@@ -58,6 +61,7 @@ const Button: React.FC<ButtonProps> = ({
         <motion.button
             type={type}
             onClick={onClick}
+            disabled={disabled}
             className={combinedClassName}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
