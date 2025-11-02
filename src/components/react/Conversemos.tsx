@@ -70,110 +70,112 @@ const Conversemos: React.FC = () => {
   };
 
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden">
-      {/* Background with radial gradient */}
-      <div className="absolute inset-0 bg-black">
-        {/* Red radial gradient on the left */}
-        <div
-          className="absolute top-0 left-0 w-full h-full"
-          style={{
-            background: 'radial-gradient(circle at 15% 30%, rgba(225, 82, 95, 0.3) 0%, rgba(171, 50, 61, 0.15) 25%, transparent 50%)'
-          }}
-        />
-      </div>
+    <section className="pt-32">
+      <div className='relative py-20 lg:py-28 overflow-hidden'>
+        {/* Background with radial gradient */}
+        <div className="absolute inset-0 bg-black">
+          {/* Red radial gradient on the left */}
+          <div
+            className="absolute top-0 left-0 w-full h-full"
+            style={{
+              background: 'radial-gradient(circle at 15% 30%, rgba(225, 82, 95, 0.3) 0%, rgba(171, 50, 61, 0.15) 25%, transparent 50%)'
+            }}
+          />
+        </div>
 
-      <div id='contacto' className="ccontainer relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Content - Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-white space-y-6 lg:sticky lg:top-8"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold">
-              Conversemos
-            </h2>
-            <p className="text-white/80 text-base lg:text-lg leading-relaxed">
-              Completa este breve formulario y ayudanos a conocer tus intereses. Tu respuesta nos ayudará a enfocar los contenidos de nuestros cursos y capacitaciones para que se alineen mejor con tus objetivos y perfil profesional. </p>
-          </motion.div>
+        <div id='contacto' className="ccontainer relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left Content - Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-white space-y-6 lg:sticky lg:top-8"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold">
+                Conversemos
+              </h2>
+              <p className="text-white/80 text-base lg:text-lg leading-relaxed">
+                Completa este breve formulario y ayudanos a conocer tus intereses. Tu respuesta nos ayudará a enfocar los contenidos de nuestros cursos y capacitaciones para que se alineen mejor con tus objetivos y perfil profesional. </p>
+            </motion.div>
 
-          {/* Right Content - Form */}
-          <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="space-y-5"
-          >
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Nombres y apellidos"
-              required
-              className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-            />
+            {/* Right Content - Form */}
+            <motion.form
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              onSubmit={handleSubmit}
+              className="space-y-5"
+            >
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Nombres y apellidos"
+                required
+                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+              />
 
-            <input
-              type="text"
-              name="specialty"
-              value={formData.specialty}
-              onChange={handleChange}
-              placeholder="Especialidad"
-              required
-              className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-            />
+              <input
+                type="text"
+                name="specialty"
+                value={formData.specialty}
+                onChange={handleChange}
+                placeholder="Especialidad"
+                required
+                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+              />
 
-            <input
-              type="text"
-              name="occupation"
-              value={formData.occupation}
-              onChange={handleChange}
-              placeholder="¿Cuál es tu ocupación actual?"
-              required
-              className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-            />
+              <input
+                type="text"
+                name="occupation"
+                value={formData.occupation}
+                onChange={handleChange}
+                placeholder="¿Cuál es tu ocupación actual?"
+                required
+                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+              />
 
-            <textarea
-              name="preference"
-              value={formData.preference}
-              onChange={handleChange}
-              placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
-              required
-              rows={2}
-              className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-            />
+              <textarea
+                name="preference"
+                value={formData.preference}
+                onChange={handleChange}
+                placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
+                required
+                rows={2}
+                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+              />
 
-            <textarea
-              name="modality"
-              value={formData.modality}
-              onChange={handleChange}
-              placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
-              rows={2}
-              required
-              className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-            />
+              <textarea
+                name="modality"
+                value={formData.modality}
+                onChange={handleChange}
+                placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
+                rows={2}
+                required
+                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+              />
 
-            <textarea
-              name="experience"
-              value={formData.experience}
-              onChange={handleChange}
-              placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
-              required
-              rows={4}
-              className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none transition-all"
-            />
+              <textarea
+                name="experience"
+                value={formData.experience}
+                onChange={handleChange}
+                placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
+                required
+                rows={4}
+                className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none transition-all"
+              />
 
-            <hr className="border-gray-300 my-4" />
+              <hr className="border-gray-300 my-4" />
 
-            <div className="flex justify-end pt-2">
-              <Button type="submit" variant="primary">
-                Enviar
-              </Button>
-            </div>
-          </motion.form>
+              <div className="flex justify-end pt-2">
+                <Button type="submit" variant="primary">
+                  Enviar
+                </Button>
+              </div>
+            </motion.form>
+          </div>
         </div>
       </div>
     </section>

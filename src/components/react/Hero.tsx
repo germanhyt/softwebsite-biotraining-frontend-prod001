@@ -5,20 +5,33 @@ import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import heroBanner from '../../assets/img/hero-banner_base.webp';
-import heroBanner2 from '../../assets/img/section-capacitacion_docentes.webp';
+import heroBanner1 from '../../assets/img/hero-banner_1.webp';
+import heroBanner2 from '../../assets/img/hero-banner_2.webp';
+import heroBanner3 from '../../assets/img/hero-banner_3.webp';
+import heroBanner4 from '../../assets/img/hero-banner_4.webp';
+import heroBanner5 from '../../assets/img/hero-banner_5.webp';
 import ContamosCon from './ContamosCon';
 import Button from './Button';
 
 const Hero: React.FC = () => {
+
+    const heroImages = [
+        heroBanner1,
+        heroBanner2,
+        heroBanner3,
+        heroBanner4,
+        heroBanner5
+    ];
+
     return (
-        <div className='relative'>
+        <div className='relative '>
             <section
-                className="relative pt-32 pb-24 md:pb-44 lg:pb-40"
+                className="relative  lg:min-h-[45rem]  pt-40 pb-24 md:pb-44 lg:pb-40"
                 style={{
                     background: 'linear-gradient(180deg, #AB323D 0%, #1a1a1a 100%)'
                 }}
             >
-                <div className="ccontainer">
+                <div className="ccontainer mx-auto ">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
                         {/* Left Content */}
                         <motion.div
@@ -80,27 +93,17 @@ const Hero: React.FC = () => {
                                 speed={1500}
                                 className="max-w-[25rem] lg:max-w-[24rem] xl:max-w-[30rem]  max-h-[24rem] xl:max-h-[30rem] rounded-3xl shadow-2xl overflow-hidden"
                             >
-                                <SwiperSlide className='relative h-full w-full'>
-                                    <img
-                                        src={heroBanner.src}
-                                        alt="Profesionales en biotecnología"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide className='relative h-full w-full'>
-                                    <img
-                                        src={heroBanner.src}
-                                        alt="Profesionales en biotecnología"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide className='relative h-full w-full'>
-                                    <img
-                                        src={heroBanner.src}
-                                        alt="Profesionales en biotecnología"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </SwiperSlide>
+                                {
+                                    heroImages.map((image, index) => (
+                                        <SwiperSlide key={index}>
+                                            <img
+                                                src={image.src}
+                                                alt={`Profesionales en biotecnología ${index + 1}`}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </SwiperSlide>
+                                    ))
+                                }
                             </Swiper>
                         </motion.div>
                     </div>

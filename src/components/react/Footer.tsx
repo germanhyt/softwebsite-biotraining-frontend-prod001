@@ -45,8 +45,18 @@ const Footer: React.FC = () => {
             <div>
               <h3 className="font-heading font-semibold text-sm mb-4">Contáctanos</h3>
               <ul className="space-y-3">
-                <li className="text-sm">{siteConfig.contact.phone}</li>
-                <li className="text-sm">{siteConfig.contact.email}</li>
+                <li className="text-sm">
+                  <a
+                    href="https://api.whatsapp.com/send?phone=+51969977934&text=Hola👋,%20me%20puede%20brindar%20más%20información sobre los cursos..."
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                </li>
+                <li className="text-sm">
+                  <a href={`mailto:${siteConfig.contact.email}`}>
+                    {siteConfig.contact.email}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import iconGraduated from '../../assets/img/icon-graduate.webp';
 import iconInstructor from '../../assets/img/icon-isntructor.webp';
 
@@ -10,6 +10,47 @@ interface StatItem {
     description: string;
 }
 
+
+const CountUp: React.FC<{
+    target: number;
+    durationMs?: number;
+    className?: string;
+    prefix?: string;
+}> = ({ target, durationMs = 1200, className = '', prefix = '' }) => {
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(wrapperRef, { amount: 0.6, once: true });
+    const [value, setValue] = useState(0);
+
+    useEffect(() => {
+        if (!isInView) return;
+
+        let rafId = 1;
+        let start: number | null = null;
+
+        const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+        const step = (ts: number) => {
+            if (start === null) start = ts;
+            const elapsed = ts - start;
+            const progress = Math.min(1, elapsed / durationMs);
+            const current = Math.round(easeOutCubic(progress) * target);
+            setValue(current);
+            if (progress < 1) {
+                rafId = requestAnimationFrame(step);
+            }
+        };
+
+        rafId = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(rafId);
+    }, [isInView, durationMs, target]);
+
+    return (
+        <div ref={wrapperRef} className={className}>
+            {prefix}{value}
+        </div>
+    );
+};
+
 const stats: StatItem[] = [
     {
         id: '1',
@@ -17,7 +58,7 @@ const stats: StatItem[] = [
             <img src={iconInstructor.src} alt="Instructor" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
         ),
         title: '',
-        description: 'Cada instructor cuenta con entrevistas publicadas de alto impacto en su área, que respaldan el dominio de su materia.',
+        description: 'Instructores con entrevistas publicadas de alto impacto en su área, que respaldan el dominio de su materia.',
     },
     {
         id: '2',
@@ -25,7 +66,7 @@ const stats: StatItem[] = [
             <img src={iconGraduated.src} alt="Instructor" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
         ),
         title: '',
-        description: 'Nuestro equipo cuenta con formación internacional y una sólida trayectoria en sus especialidades.',
+        description: 'Staff de profesionales con formación internacional y una sólida trayectoria en sus especialidades.',
     },
     {
         id: '3',
@@ -67,9 +108,17 @@ const ContamosCon: React.FC = () => {
                                 transition={{ delay: index * 0.15 }}
                                 className="bg-[#F2F2F2] rounded-3xl p-6 md:p-4 lg:p-[1.2rem] space-y-3  transition-shadow duration-300 relative z-10"
                             >
-                                {/* Icon */}
+                                {/* Icon / Counter */}
                                 <div className="flex justify-start text-primary-900 ">
-                                    {stat.icon}
+                                    {stat.id === '3' ? (
+                                        <CountUp
+                                            target={100}
+                                            prefix="+"
+                                            className="text-[2.75rem] sm:text-[2.5rem] font-bold"
+                                        />
+                                    ) : (
+                                        stat.icon
+                                    )}
                                 </div>
 
                                 {/* Content */}

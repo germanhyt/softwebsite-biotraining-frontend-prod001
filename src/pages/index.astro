@@ -1,26 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/react/Header';
-import Hero from '../components/react/Hero';
-import ContamosCon from '../components/react/ContamosCon';
-import EstudianteProfesional from '../components/react/EstudianteProfesional';
-import Benefits from '../components/react/Benefits';
-import MetodologiaExito from '../components/react/MetodologiaExito';
-import EquiposUltimaGeneracion from '../components/react/EquiposUltimaGeneracion';
-import Courses from '../components/react/Courses';
-import IncentivandoAprendizaje from '../components/react/IncentivandoAprendizaje';
-import Instructors from '../components/react/Instructors';
-import Partners from '../components/react/Partners';
-import Testimonials from '../components/react/Testimonials';
-import CTAEmpresas from '../components/react/CTAEmpresas';
-import Conversemos from '../components/react/Conversemos';
-import FAQ from '../components/react/FAQ';
-import Footer from '../components/react/Footer';
-import { pageSEO } from '../config/seoConfig';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/react/Header";
+import Hero from "../components/react/Hero";
+import ContamosCon from "../components/react/ContamosCon";
+import EstudianteProfesional from "../components/react/EstudianteProfesional";
+import Benefits from "../components/react/Benefits";
+import MetodologiaExito from "../components/react/MetodologiaExito";
+import EquiposUltimaGeneracion from "../components/react/EquiposUltimaGeneracion";
+import Courses from "../components/react/Courses";
+import IncentivandoAprendizaje from "../components/react/IncentivandoAprendizaje";
+import Instructors from "../components/react/Instructors";
+import Partners from "../components/react/Partners";
+import Testimonials from "../components/react/Testimonials";
+import CTAEmpresas from "../components/react/CTAEmpresas";
+import Conversemos from "../components/react/Conversemos";
+import FAQ from "../components/react/FAQ";
+import Footer from "../components/react/Footer";
+import { pageSEO } from "../config/seoConfig";
+import SocialNetworks from "../components/react/SocialNetworks";
 ---
 
 <Layout seo={pageSEO.home}>
   <Header client:load />
+  <SocialNetworks client:load />
   <main>
     <Hero client:load />
     <EstudianteProfesional client:load />
@@ -38,4 +40,3 @@ import { pageSEO } from '../config/seoConfig';
   </main>
   <Footer client:load />
 </Layout>
-
