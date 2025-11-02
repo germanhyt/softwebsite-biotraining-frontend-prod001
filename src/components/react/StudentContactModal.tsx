@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 interface StudentContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  courseInterested: string | undefined;
 }
 
 interface StudentFormData {
@@ -44,6 +45,7 @@ const studentSchema = yup.object({
 const StudentContactModal: React.FC<StudentContactModalProps> = ({
   isOpen,
   onClose,
+  courseInterested
 }) => {
   const {
     register,
@@ -56,19 +58,23 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
 
   const onSubmit = async (data: StudentFormData) => {
     try {
-      // Simulate form submission
-      console.log('Student Form Data:', data);
-      
-      // Here you would send data to your API
-      // await fetch('/api/send-email', { method: 'POST', body: JSON.stringify(data) })
-      
+      // Send to API
+      const res = await fetch('/api/send-student', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.message || 'Error sending');
+
       Swal.fire({
         title: '¡Excelente!',
         text: 'Hemos recibido tu información. Nos comunicaremos contigo pronto.',
         icon: 'success',
         confirmButtonColor: '#E1525F',
       });
-      
+
       reset();
       onClose();
     } catch (error) {
@@ -176,6 +182,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                   <input
                     placeholder="Curso de interés (Se selecciona automáticamente)"
                     {...register('courseInterest')}
+                    value={courseInterested}
                     disabled
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none bg-gray-50 text-gray-600"
                   />

@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 
+export const prerender = false;
+
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
@@ -29,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Enviar email
     const emailResult = await resend.emails.send({
       from: 'Biotraining <onboarding@resend.dev>',
-      to: ['info@biotraining.pe'],
+      to: ['ktalweb.peru@gmail.com'],
       subject: `Nuevo contacto: ${nombre}`,
       html: `
         <!DOCTYPE html>

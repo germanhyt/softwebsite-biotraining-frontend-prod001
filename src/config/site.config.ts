@@ -11,7 +11,7 @@ export const siteConfig = {
   },
   contact: {
     phone: '969 977 934',
-    email: 'Info@biotraining.pe',
+    email: 'ktalweb.peru@gmail.com',
     whatsapp: '+51969977934',
   },
   navigation: [

@@ -56,11 +56,15 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
   const onSubmit = async (data: EnterpriseFormData) => {
     try {
-      // Simulate form submission
-      console.log('Enterprise Form Data:', data);
+      // Send to API
+      const res = await fetch('/api/send-enterprise', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-      // Here you would send data to your API
-      // await fetch('/api/send-email', { method: 'POST', body: JSON.stringify(data) }
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.message || 'Error sending');
 
       Swal.fire({
         title: '¡Excelente!',

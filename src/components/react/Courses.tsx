@@ -66,6 +66,8 @@ const BREAKPOINTS = {
 
 const Courses: React.FC = () => {
 
+  const [courseInterested, setCourseInterested] = useState<string | undefined>(undefined);
+
   const swiperRefs = useRef<{ [key: string]: any }>({});
   const [showButtons, setShowButtons] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -174,7 +176,10 @@ const Courses: React.FC = () => {
                     </p>
                     <div className="w-full flex justify-center pt-4">
                       <Button
-                        onClick={() => setIsStudentModalOpen(true)}
+                        onClick={() => {
+                          setCourseInterested(course.title);
+                          setIsStudentModalOpen(true);
+                        }}
                         variant="primary"
                       >
                         Inscríbete
@@ -219,6 +224,7 @@ const Courses: React.FC = () => {
       <StudentContactModal
         isOpen={isStudentModalOpen}
         onClose={() => setIsStudentModalOpen(false)}
+        courseInterested={courseInterested}
       />
     </section >
   );
