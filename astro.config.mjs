@@ -15,10 +15,6 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  output: "static",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
+  output: "server",
+  adapter: vercel({}),
 });
