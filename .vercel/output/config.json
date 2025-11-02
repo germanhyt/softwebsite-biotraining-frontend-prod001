@@ -38,10 +38,6 @@
 		{
 			"src": "^/api/send-student/?$",
 			"dest": "_render"
-		},
-		{
-			"src": "^/$",
-			"dest": "_render"
 		}
 	],
 	"images": {

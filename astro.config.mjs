@@ -15,7 +15,7 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  output: 'server',
+  output: 'static',
   adapter: vercel({
     imageService: true,
   }),
