@@ -15,12 +15,10 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  output: "server", // Cambiado a server para Vercel
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
     },
-    imageService: true,
-    includeFiles: [],
   }),
 });
