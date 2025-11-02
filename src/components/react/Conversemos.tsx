@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
 import Button from './Button';
+import { actions } from 'astro:actions';
 
 interface FormData {
   name: string;
@@ -55,15 +56,12 @@ const Conversemos: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Send to API
-      const res = await fetch('/api/send-conversemos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Error sending');
+        // Usar Astro Actions
+        const result = await actions.sendConversemos(data);
+      
+        if (result.error) {
+          throw new Error(result.error.message || 'Error al enviar');
+        }
 
       Swal.fire({
         title: '¡Mensaje enviado!',
@@ -76,7 +74,7 @@ const Conversemos: React.FC = () => {
     } catch (error) {
       Swal.fire({
         title: 'Error',
-        text: 'No se pudo enviar el mensaje. Intenta nuevamente.',
+          text: error instanceof Error ? error.message : 'No se pudo enviar el mensaje. Intenta nuevamente.',
         icon: 'error',
         confirmButtonColor: '#E1525F',
       });

@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
+import { actions } from 'astro:actions';
 
 interface StudentContactModalProps {
   isOpen: boolean;
@@ -58,15 +59,12 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
 
   const onSubmit = async (data: StudentFormData) => {
     try {
-      // Send to API
-      const res = await fetch('/api/send-student', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Error sending');
+        // Usar Astro Actions
+        const result = await actions.sendStudent(data);
+      
+        if (result.error) {
+          throw new Error(result.error.message || 'Error al enviar');
+        }
 
       Swal.fire({
         title: '¡Excelente!',

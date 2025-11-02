@@ -1,4 +1,4 @@
-import { e as createAstro, f as createComponent, h as addAttribute, k as renderHead, l as renderSlot, r as renderTemplate, n as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_Bg0Qo1bg.mjs';
+import { e as createAstro, f as createComponent, h as addAttribute, k as renderHead, l as renderSlot, r as renderTemplate, n as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_D0ZfQEZZ.mjs';
 import 'clsx';
 /* empty css                                 */
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
+import { a as actions } from '../chunks/virtual_CQr-vAqk.mjs';
 export { renderers } from '../renderers.mjs';
 
 const defaultSEO = {
@@ -974,13 +975,10 @@ const StudentContactModal = ({
   });
   const onSubmit = async (data) => {
     try {
-      const res = await fetch("/api/send-student", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || "Error sending");
+      const result = await actions.sendStudent(data);
+      if (result.error) {
+        throw new Error(result.error.message || "Error al enviar");
+      }
       Swal.fire({
         title: "¡Excelente!",
         text: "Hemos recibido tu información. Nos comunicaremos contigo pronto.",
@@ -1936,13 +1934,10 @@ const EnterpriseContactModal = ({
   });
   const onSubmit = async (data) => {
     try {
-      const res = await fetch("/api/send-enterprise", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || "Error sending");
+      const result = await actions.sendEnterprise(data);
+      if (result.error) {
+        throw new Error(result.error.message || "Error al enviar");
+      }
       Swal.fire({
         title: "¡Excelente!",
         text: "Hemos recibido tu información. Nos comunicaremos contigo pronto para presentar nuestras soluciones de capacitación.",
@@ -2144,13 +2139,10 @@ const Conversemos = () => {
   });
   const onSubmit = async (data) => {
     try {
-      const res = await fetch("/api/send-conversemos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || "Error sending");
+      const result = await actions.sendConversemos(data);
+      if (result.error) {
+        throw new Error(result.error.message || "Error al enviar");
+      }
       Swal.fire({
         title: "¡Mensaje enviado!",
         text: "Nos pondremos en contacto contigo pronto.",
@@ -2161,7 +2153,7 @@ const Conversemos = () => {
     } catch (error) {
       Swal.fire({
         title: "Error",
-        text: "No se pudo enviar el mensaje. Intenta nuevamente.",
+        text: error instanceof Error ? error.message : "No se pudo enviar el mensaje. Intenta nuevamente.",
         icon: "error",
         confirmButtonColor: "#E1525F"
       });

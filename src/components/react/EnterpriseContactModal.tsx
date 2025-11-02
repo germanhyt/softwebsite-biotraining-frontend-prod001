@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
+import { actions } from 'astro:actions';
 
 interface EnterpriseContactModalProps {
   isOpen: boolean;
@@ -56,15 +57,12 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
   const onSubmit = async (data: EnterpriseFormData) => {
     try {
-      // Send to API
-      const res = await fetch('/api/send-enterprise', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Error sending');
+        // Usar Astro Actions
+        const result = await actions.sendEnterprise(data);
+      
+        if (result.error) {
+          throw new Error(result.error.message || 'Error al enviar');
+        }
 
       Swal.fire({
         title: '¡Excelente!',
