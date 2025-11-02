@@ -3,7 +3,6 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless"; // ← Cambio aquí
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,8 +14,5 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  output: "server",
-  adapter: vercel({
-    edgeMiddleware: false,
-  }),
+  output: "static",
 });
