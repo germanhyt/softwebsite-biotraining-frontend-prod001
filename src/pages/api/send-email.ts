@@ -1,9 +1,11 @@
 import type { APIRoute } from 'astro';
-import { Resend } from 'resend';
+import emailjs from '@emailjs/nodejs';
 
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const SERVICE_ID = 'service_5nkb8y7';
+const PUBLIC_KEY = import.meta.env.EMAILJS_PUBLIC_KEY;
+const PRIVATE_KEY = import.meta.env.EMAILJS_PRIVATE_KEY;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -28,12 +30,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Enviar email
-    const emailResult = await resend.emails.send({
-      from: 'Biotraining <onboarding@resend.dev>',
-      to: ['ktalweb.peru@gmail.com'],
-      subject: `Nuevo contacto: ${nombre}`,
-      html: `
+    // Crear el HTML para el template
+    const html = `
         <!DOCTYPE html>
         <html>
           <head>
@@ -130,11 +128,34 @@ export const POST: APIRoute = async ({ request }) => {
             </div>
           </body>
         </html>
-      `,
-    });
+      `;
 
-    if (emailResult.error) {
-      console.error('Error al enviar email:', emailResult.error);
+    // Parámetros del template de EmailJS
+    const templateParams = {
+      to_email: 'ktalweb.peru@gmail.com',
+      subject: `Nuevo contacto: ${nombre}`,
+      message: html,
+      nombre,
+      especialidad,
+      ocupacion: ocupacion || 'No especificado',
+      formato: formato || 'No especificado',
+      modalidad: modalidad || 'No especificado',
+      experiencia: experiencia || 'No especificado',
+    };
+
+    // Enviar email con EmailJS
+    const emailResult = await emailjs.send(
+      SERVICE_ID,
+      import.meta.env.EMAILJS_TEMPLATE_CONTACT,
+      templateParams,
+      {
+        publicKey: PUBLIC_KEY,
+        privateKey: PRIVATE_KEY,
+      }
+    );
+
+    if (emailResult.status !== 200) {
+      console.error('Error al enviar email:', emailResult);
       return new Response(
         JSON.stringify({
           success: false,
