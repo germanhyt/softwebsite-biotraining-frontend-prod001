@@ -36,7 +36,7 @@
 			"dest": "_render"
 		},
 		{
-			"src": "^/$",
+			"src": "^/api/test/?$",
 			"dest": "_render"
 		}
 	]
