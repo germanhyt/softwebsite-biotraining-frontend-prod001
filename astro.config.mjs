@@ -16,5 +16,7 @@ export default defineConfig({
     sitemap(),
   ],
   output: "server",
-  adapter: vercel({}),
+  adapter: vercel({
+    edgeMiddleware: false,
+  }),
 });
