@@ -1,7 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useForm } from '@formspree/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
 
@@ -10,80 +8,23 @@ interface EnterpriseContactModalProps {
   onClose: () => void;
 }
 
-interface EnterpriseFormData {
-  companyName: string;
-  contact: string;
-  email: string;
-  collaborators: string;
-  trainingArea: string;
-}
-
-// Validation schema
-const enterpriseSchema = yup.object({
-  companyName: yup
-    .string()
-    .required('Por favor ingresa el nombre de la empresa')
-    .min(3, 'Debe tener al menos 3 caracteres'),
-  contact: yup
-    .string()
-    .required('Por favor ingresa un número de contacto')
-    .min(7, 'Ingresa un número válido'),
-  email: yup
-    .string()
-    .required('Por favor ingresa tu correo electrónico')
-    .email('Ingresa un correo válido'),
-  collaborators: yup
-    .string()
-    .required('Por favor selecciona el número de colaboradores')
-    .oneOf(['1-10', '11-50', '51-100', '101-500', '500+'], 'Selecciona una opción válida'),
-  trainingArea: yup
-    .string()
-    .required('Por favor selecciona un área de capacitación'),
-});
-
 const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<EnterpriseFormData>({
-    resolver: yupResolver(enterpriseSchema),
-  });
+  const [state, handleSubmit] = useForm(import.meta.env.PUBLIC_FORMSPREE_ENTERPRISE || '');
 
-  const onSubmit = async (data: EnterpriseFormData) => {
-    try {
-      // Send to API
-      const res = await fetch('/api/send-enterprise', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Error sending');
-
+  React.useEffect(() => {
+    if (state.succeeded) {
       Swal.fire({
         title: '¡Excelente!',
         text: 'Hemos recibido tu información. Nos comunicaremos contigo pronto para presentar nuestras soluciones de capacitación.',
         icon: 'success',
         confirmButtonColor: '#E1525F',
       });
-
-      reset();
       onClose();
-    } catch (error) {
-      Swal.fire({
-        title: 'Error',
-        text: 'Hubo un problema al enviar tu información. Por favor intenta nuevamente.',
-        icon: 'error',
-        confirmButtonColor: '#E1525F',
-      });
     }
-  };
+  }, [state.succeeded, onClose]);
 
   return (
     <AnimatePresence>
@@ -120,49 +61,46 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
               </h2>
 
               {/* Form */}
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Company Name */}
                 <div>
                   <input
+                    name="companyName"
                     placeholder="Nombre de la empresa"
-                    {...register('companyName')}
+                    required
+                    minLength={3}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
-                  {errors.companyName && (
-                    <p className="text-red-500 text-sm mt-1">{errors.companyName.message}</p>
-                  )}
                 </div>
 
                 {/* Contact */}
                 <div>
                   <input
+                    name="contact"
                     placeholder="Contacto"
-                    {...register('contact')}
                     type="tel"
+                    required
+                    minLength={7}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
-                  {errors.contact && (
-                    <p className="text-red-500 text-sm mt-1">{errors.contact.message}</p>
-                  )}
                 </div>
 
                 {/* Email */}
                 <div>
                   <input
+                    name="email"
                     placeholder="Correo electrónico"
-                    {...register('email')}
                     type="email"
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-                  )}
                 </div>
 
                 {/* Number of Collaborators */}
                 <div>
                   <select
-                    {...register('collaborators')}
+                    name="collaborators"
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
                     <option value="">Indique el número de colaboradores a capacitar</option>
@@ -172,15 +110,13 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                     <option value="101-500">101-500 colaboradores</option>
                     <option value="500+">500+ colaboradores</option>
                   </select>
-                  {errors.collaborators && (
-                    <p className="text-red-500 text-sm mt-1">{errors.collaborators.message}</p>
-                  )}
                 </div>
 
                 {/* Training Area */}
                 <div>
                   <select
-                    {...register('trainingArea')}
+                    name="trainingArea"
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
                     <option value="">Seleccione el área o tipo de capacitación de interés</option>
@@ -190,19 +126,16 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                     <option value="ciencias_salud">Ciencias de la Salud</option>
                     <option value="otro">Otro</option>
                   </select>
-                  {errors.trainingArea && (
-                    <p className="text-red-500 text-sm mt-1">{errors.trainingArea.message}</p>
-                  )}
                 </div>
 
                 {/* Submit Button */}
                 <div className="flex justify-center pt-4">
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                     className="px-12 py-3 bg-gradient-to-r from-[#AB323D] to-[#E1525F] text-white font-semibold rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
-                    {isSubmitting ? 'Enviando...' : 'Enviar'}
+                    {state.submitting ? 'Enviando...' : 'Enviar'}
                   </button>
                 </div>
               </form>
@@ -215,3 +148,4 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 };
 
 export default EnterpriseContactModal;
+
