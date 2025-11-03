@@ -74,6 +74,8 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                 <input type="hidden" name="_subject" value="🏢 Nueva Solicitud Empresarial - BioTraining" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_format" value="html" />
+                <input type="hidden" name="_email.title" value="Solicitud de Capacitación Empresarial" />
+                <input type="hidden" name="_email.subtitle" value="Una empresa está interesada en capacitar a su equipo" />
                 
                 {/* Company Name */}
                 <div>

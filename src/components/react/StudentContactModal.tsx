@@ -76,6 +76,8 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                 <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_format" value="html" />
+                <input type="hidden" name="_email.title" value="Inscripción de Estudiante/Profesional" />
+                <input type="hidden" name="_email.subtitle" value="Un estudiante o profesional está interesado en un curso" />
 
                 {/* Full Name */}
                 <div>

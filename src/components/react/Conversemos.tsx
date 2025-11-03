@@ -56,6 +56,8 @@ const Conversemos: React.FC = () => {
               <input type="hidden" name="_subject" value="💬 Nuevo Mensaje del Formulario Conversemos - BioTraining" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_format" value="html" />
+              <input type="hidden" name="_email.title" value="Nueva Solicitud de Conversación" />
+              <input type="hidden" name="_email.subtitle" value="Un profesional está interesado en conocer más sobre nuestros cursos" />
               
               {/* Name */}
               <div>
