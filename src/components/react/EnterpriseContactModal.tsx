@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../config/emailjs.config';
 
 interface EnterpriseContactModalProps {
   isOpen: boolean;
@@ -56,15 +58,23 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
   const onSubmit = async (data: EnterpriseFormData) => {
     try {
-      // Send to API
-      const res = await fetch('/api/send-enterprise', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      // Preparar parámetros del template
+      const templateParams = {
+        from_name: 'Biotraining - Capacitación Empresarial',
+        company_name: data.companyName,
+        contact: data.contact,
+        email: data.email,
+        collaborators: data.collaborators,
+        training_area: data.trainingArea,
+      };
 
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Error sending');
+      // Enviar email usando EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
 
       Swal.fire({
         title: '¡Excelente!',
@@ -76,6 +86,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
       reset();
       onClose();
     } catch (error) {
+      console.error('Error al enviar email:', error);
       Swal.fire({
         title: 'Error',
         text: 'Hubo un problema al enviar tu información. Por favor intenta nuevamente.',

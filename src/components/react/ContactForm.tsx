@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../config/emailjs.config';
 
 interface FormData {
   nombre: string;
   especialidad: string;
+  email: string;
   ocupacion: string;
   formato: string;
   modalidad: string;
@@ -15,6 +18,7 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     especialidad: '',
+    email: '',
     ocupacion: '',
     formato: '',
     modalidad: '',
@@ -35,37 +39,45 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Preparar parámetros del template
+      const templateParams = {
+        from_name: 'Biotraining - Formulario Conversemos',
+        nombre: formData.nombre,
+        especialidad: formData.especialidad,
+        email: formData.email,
+        ocupacion: formData.ocupacion || 'No especificado',
+        formato: formData.formato || 'No especificado',
+        modalidad: formData.modalidad || 'No especificado',
+        experiencia: formData.experiencia || 'No especificado',
+      };
+
+      // Enviar email usando EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
+
+      await Swal.fire({
+        icon: 'success',
+        title: '¡Gracias por tu interés!',
+        text: 'Hemos recibido tu información. Pronto nos pondremos en contacto contigo.',
+        confirmButtonColor: '#E1525F',
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        await Swal.fire({
-          icon: 'success',
-          title: '¡Gracias por tu interés!',
-          text: 'Hemos recibido tu información. Pronto nos pondremos en contacto contigo.',
-          confirmButtonColor: '#E1525F',
-        });
-
-        // Resetear formulario
-        setFormData({
-          nombre: '',
-          especialidad: '',
-          ocupacion: '',
-          formato: '',
-          modalidad: '',
-          experiencia: '',
-        });
-      } else {
-        throw new Error(result.message);
-      }
+      // Resetear formulario
+      setFormData({
+        nombre: '',
+        especialidad: '',
+        email: '',
+        ocupacion: '',
+        formato: '',
+        modalidad: '',
+        experiencia: '',
+      });
     } catch (error) {
+      console.error('Error al enviar email:', error);
       await Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -117,6 +129,16 @@ const ContactForm: React.FC = () => {
                 value={formData.especialidad}
                 onChange={handleChange}
                 placeholder="Especialidad"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              />
+
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Correo electrónico"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500"
               />

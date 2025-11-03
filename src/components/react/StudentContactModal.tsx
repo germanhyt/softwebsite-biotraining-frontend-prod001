@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../config/emailjs.config';
 
 interface StudentContactModalProps {
   isOpen: boolean;
@@ -14,6 +16,7 @@ interface StudentContactModalProps {
 interface StudentFormData {
   fullName: string;
   studentType: 'estudiante' | 'profesional';
+  email: string;
   speciality: string;
   workArea: 'diagnostico' | 'investigacion';
   courseInterest: string;
@@ -29,6 +32,11 @@ const studentSchema = yup.object({
     .string()
     .oneOf(['estudiante', 'profesional'], 'Selecciona una opción válida')
     .required('Por favor selecciona tu condición'),
+  email: yup
+    .string()
+    .required('Por favor ingresa tu correo electrónico')
+    .email('Ingresa un correo válido'),
+  
   speciality: yup
     .string()
     .required('Por favor especifica tu especialidad o área de estudio')
@@ -58,15 +66,24 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
 
   const onSubmit = async (data: StudentFormData) => {
     try {
-      // Send to API
-      const res = await fetch('/api/send-student', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      // Preparar parámetros del template
+      const templateParams = {
+        from_name: 'Biotraining - Inscripción',
+        full_name: data.fullName,
+        student_type: data.studentType,
+        email: data.email,
+        speciality: data.speciality,
+        work_area: data.workArea,
+        course_interest: data.courseInterest,
+      };
 
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.message || 'Error sending');
+      // Enviar email usando EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
 
       Swal.fire({
         title: '¡Excelente!',
@@ -78,6 +95,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
       reset();
       onClose();
     } catch (error) {
+      console.error('Error al enviar email:', error);
       Swal.fire({
         title: 'Error',
         text: 'Hubo un problema al enviar tu información. Por favor intenta nuevamente.',
@@ -132,6 +150,19 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                   />
                   {errors.fullName && (
                     <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
+                  )}
+                </div>
+
+                {/* Email */}
+                <div>
+                  <input
+                    placeholder="Correo electrónico"
+                    type="email"
+                    {...register('email')}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
                   )}
                 </div>
 
