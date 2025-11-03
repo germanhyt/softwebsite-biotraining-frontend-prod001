@@ -12,19 +12,27 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [state, handleSubmit] = useForm(import.meta.env.PUBLIC_FORMSPREE_ENTERPRISE || '');
+  const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_ENTERPRISE || '');
+  const hasShownSuccess = React.useRef(false);
 
   React.useEffect(() => {
-    if (state.succeeded) {
+    if (state.succeeded && !hasShownSuccess.current) {
+      hasShownSuccess.current = true;
       Swal.fire({
         title: '¡Excelente!',
         text: 'Hemos recibido tu información. Nos comunicaremos contigo pronto para presentar nuestras soluciones de capacitación.',
         icon: 'success',
         confirmButtonColor: '#E1525F',
+        customClass: {
+          container: 'swal-high-zindex'
+        }
+      }).then(() => {
+        reset();
+        hasShownSuccess.current = false;
+        onClose();
       });
-      onClose();
     }
-  }, [state.succeeded, onClose]);
+  }, [state.succeeded, reset, onClose]);
 
   return (
     <AnimatePresence>
@@ -62,10 +70,15 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Campos ocultos de Formspree */}
+                <input type="hidden" name="_subject" value="🏢 Nueva Solicitud Empresarial - BioTraining" />
+                <input type="hidden" name="_template" value="box" />
+                <input type="hidden" name="_cc" value="" />
+                
                 {/* Company Name */}
                 <div>
                   <input
-                    name="companyName"
+                    name="Nombre de la Empresa"
                     placeholder="Nombre de la empresa"
                     required
                     minLength={3}
@@ -76,7 +89,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                 {/* Contact */}
                 <div>
                   <input
-                    name="contact"
+                    name="Teléfono de Contacto"
                     placeholder="Contacto"
                     type="tel"
                     required
@@ -88,7 +101,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                 {/* Email */}
                 <div>
                   <input
-                    name="email"
+                    name="Correo Electrónico"
                     placeholder="Correo electrónico"
                     type="email"
                     required
@@ -99,7 +112,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                 {/* Number of Collaborators */}
                 <div>
                   <select
-                    name="collaborators"
+                    name="Número de Colaboradores"
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
@@ -115,7 +128,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                 {/* Training Area */}
                 <div>
                   <select
-                    name="trainingArea"
+                    name="Área de Capacitación"
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >

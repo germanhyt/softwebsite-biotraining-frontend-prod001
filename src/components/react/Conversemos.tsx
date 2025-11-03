@@ -4,18 +4,26 @@ import Swal from 'sweetalert2';
 import Button from './Button';
 
 const Conversemos: React.FC = () => {
-  const [state, handleSubmit] = useForm(import.meta.env.PUBLIC_FORMSPREE_CONVERSEMOS || '');
+  const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_CONVERSEMOS || '');
+  const hasShownSuccess = React.useRef(false);
 
   React.useEffect(() => {
-    if (state.succeeded) {
+    if (state.succeeded && !hasShownSuccess.current) {
+      hasShownSuccess.current = true;
       Swal.fire({
         title: '¡Mensaje enviado!',
         text: 'Nos pondremos en contacto contigo pronto.',
         icon: 'success',
         confirmButtonColor: '#E1525F',
+        customClass: {
+          container: 'swal-high-zindex'
+        }
+      }).then(() => {
+        reset();
+        hasShownSuccess.current = false;
       });
     }
-  }, [state.succeeded]);
+  }, [state.succeeded, reset]);
 
   return (
     <section className="pt-32">
@@ -44,11 +52,15 @@ const Conversemos: React.FC = () => {
 
             {/* Right Content - Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Campos ocultos de Formspree */}
+              <input type="hidden" name="_subject" value="💬 Nuevo Mensaje del Formulario Conversemos - BioTraining" />
+              <input type="hidden" name="_template" value="box" />
+              
               {/* Name */}
               <div>
                 <input
                   type="text"
-                  name="name"
+                  name="Nombres y Apellidos"
                   placeholder="Nombres y apellidos"
                   required
                   minLength={3}
@@ -60,7 +72,7 @@ const Conversemos: React.FC = () => {
               <div>
                 <input
                   type="text"
-                  name="specialty"
+                  name="Especialidad"
                   placeholder="Especialidad"
                   required
                   minLength={2}
@@ -72,7 +84,7 @@ const Conversemos: React.FC = () => {
               <div>
                 <input
                   type="text"
-                  name="occupation"
+                  name="Ocupación Actual"
                   placeholder="¿Cuál es tu ocupación actual?"
                   required
                   minLength={3}
@@ -83,7 +95,7 @@ const Conversemos: React.FC = () => {
               {/* Preference */}
               <div>
                 <textarea
-                  name="preference"
+                  name="Preferencia de Formato"
                   placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
                   required
                   minLength={10}
@@ -95,7 +107,7 @@ const Conversemos: React.FC = () => {
               {/* Modality */}
               <div>
                 <textarea
-                  name="modality"
+                  name="Preferencia de Modalidad"
                   placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
                   required
                   minLength={10}
@@ -107,7 +119,7 @@ const Conversemos: React.FC = () => {
               {/* Experience */}
               <div>
                 <textarea
-                  name="experience"
+                  name="Experiencia Práctica Deseada"
                   placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
                   required
                   minLength={15}

@@ -14,19 +14,27 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
   onClose,
   courseInterested
 }) => {
-  const [state, handleSubmit] = useForm(import.meta.env.PUBLIC_FORMSPREE_STUDENT || '');
+  const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_STUDENT || '');
+  const hasShownSuccess = React.useRef(false);
 
   React.useEffect(() => {
-    if (state.succeeded) {
+    if (state.succeeded && !hasShownSuccess.current) {
+      hasShownSuccess.current = true;
       Swal.fire({
         title: '¡Excelente!',
         text: 'Hemos recibido tu información. Nos comunicaremos contigo pronto.',
         icon: 'success',
         confirmButtonColor: '#E1525F',
+        customClass: {
+          container: 'swal-high-zindex'
+        }
+      }).then(() => {
+        reset();
+        hasShownSuccess.current = false;
+        onClose();
       });
-      onClose();
     }
-  }, [state.succeeded, onClose]);
+  }, [state.succeeded, reset, onClose]);
 
   return (
     <AnimatePresence>
@@ -64,10 +72,14 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Campos ocultos de Formspree */}
+                <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
+                <input type="hidden" name="_template" value="box" />
+                
                 {/* Full Name */}
                 <div>
                   <input
-                    name="fullName"
+                    name="Nombres y Apellidos"
                     placeholder="Nombres y apellidos"
                     required
                     minLength={5}
@@ -78,7 +90,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                 {/* Student Type */}
                 <div>
                   <select
-                    name="studentType"
+                    name="Tipo de Perfil"
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
@@ -91,7 +103,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                 {/* Speciality */}
                 <div>
                   <input
-                    name="speciality"
+                    name="Especialidad"
                     placeholder="Indique su especialidad"
                     required
                     minLength={3}
@@ -102,7 +114,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                 {/* Work Area */}
                 <div>
                   <select
-                    name="workArea"
+                    name="Área de Trabajo"
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
@@ -115,7 +127,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                 {/* Course Interest */}
                 <div>
                   <input
-                    name="courseInterest"
+                    name="Curso de Interés"
                     placeholder="Curso de interés (Se selecciona automáticamente)"
                     value={courseInterested}
                     readOnly

@@ -90,3 +90,12 @@
     text-wrap: balance;
   }
 }
+
+/* SweetAlert2 z-index fix para aparecer sobre modales */
+.swal-high-zindex {
+  z-index: 99999 !important;
+}
+
+.swal-high-zindex .swal2-container {
+  z-index: 99999 !important;
+}
