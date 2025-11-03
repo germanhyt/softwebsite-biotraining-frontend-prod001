@@ -54,7 +54,8 @@ const Conversemos: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Campos ocultos de Formspree */}
               <input type="hidden" name="_subject" value="💬 Nuevo Mensaje del Formulario Conversemos - BioTraining" />
-              <input type="hidden" name="_template" value="box" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_format" value="html" />
               
               {/* Name */}
               <div>

@@ -74,8 +74,9 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Campos ocultos de Formspree */}
                 <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
-                <input type="hidden" name="_template" value="box" />
-                
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_format" value="html" />
+
                 {/* Full Name */}
                 <div>
                   <input

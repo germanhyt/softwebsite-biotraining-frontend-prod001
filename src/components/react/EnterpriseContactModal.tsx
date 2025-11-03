@@ -72,8 +72,8 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Campos ocultos de Formspree */}
                 <input type="hidden" name="_subject" value="🏢 Nueva Solicitud Empresarial - BioTraining" />
-                <input type="hidden" name="_template" value="box" />
-                <input type="hidden" name="_cc" value="" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_format" value="html" />
                 
                 {/* Company Name */}
                 <div>
