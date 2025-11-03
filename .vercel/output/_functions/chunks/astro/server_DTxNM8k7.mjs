@@ -5,7 +5,7 @@ import { decodeBase64, encodeBase64, encodeHexUpperCase, decodeHex } from '@oslo
 import { z } from 'zod';
 import 'cssesc';
 
-const ASTRO_VERSION = "5.15.1";
+const ASTRO_VERSION = "5.15.3";
 const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
 const REWRITE_DIRECTIVE_HEADER_KEY = "X-Astro-Rewrite";
 const REWRITE_DIRECTIVE_HEADER_VALUE = "yes";

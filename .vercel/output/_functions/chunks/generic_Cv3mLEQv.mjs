@@ -1,5 +1,5 @@
 import { i as isRemoteAllowed, j as joinPaths, a as isRemotePath, t as typeHandlers, b as types } from './index_DcV6kM1H.mjs';
-import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, a as UnsupportedImageConversion, t as toStyleString, N as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, b as ExpectedImageOptions, c as ExpectedNotESMImage, d as InvalidImageService, e as createAstro, f as createComponent, g as ImageMissingAlt, m as maybeRenderHead, h as addAttribute, s as spreadAttributes, r as renderTemplate, i as ExperimentalFontsNotEnabled, j as FontFamilyNotFound, u as unescapeHTML } from './astro/server_r59jpfp4.mjs';
+import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, a as UnsupportedImageConversion, t as toStyleString, N as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, b as ExpectedImageOptions, c as ExpectedNotESMImage, d as InvalidImageService, e as createAstro, f as createComponent, g as ImageMissingAlt, m as maybeRenderHead, h as addAttribute, s as spreadAttributes, r as renderTemplate, i as ExperimentalFontsNotEnabled, j as FontFamilyNotFound, u as unescapeHTML } from './astro/server_DTxNM8k7.mjs';
 import 'clsx';
 import * as mime from 'mrmime';
 import '../renderers.mjs';
@@ -323,7 +323,14 @@ const baseService = {
       options[key] && searchParams.append(param, options[key].toString());
     });
     const imageEndpoint = joinPaths("/", imageConfig.endpoint.route);
-    return `${imageEndpoint}?${searchParams}`;
+    let url = `${imageEndpoint}?${searchParams}`;
+    if (imageConfig.assetQueryParams) {
+      const assetQueryString = imageConfig.assetQueryParams.toString();
+      if (assetQueryString) {
+        url += "&" + assetQueryString;
+      }
+    }
+    return url;
   },
   parseURL(url) {
     const params = url.searchParams;
@@ -472,11 +479,19 @@ async function inferRemoteSize(url) {
   });
 }
 
+const PLACEHOLDER_BASE = "astro://placeholder";
+function createPlaceholderURL(pathOrUrl) {
+  return new URL(pathOrUrl, PLACEHOLDER_BASE);
+}
+function stringifyPlaceholderURL(url) {
+  return url.href.replace(PLACEHOLDER_BASE, "");
+}
+
 async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_CwpCNvDH.mjs'
+      './sharp_C0xSrTnx.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -600,6 +615,22 @@ async function getImage$1(options, imageConfig) {
         url: matchesValidatedTransform(srcSet.transform) ? imageURL : globalThis.astroAsset.addStaticImage(srcSet.transform, propsToHash, originalFilePath),
         descriptor: srcSet.descriptor,
         attributes: srcSet.attributes
+      };
+    });
+  } else if (imageConfig.assetQueryParams) {
+    const imageURLObj = createPlaceholderURL(imageURL);
+    imageConfig.assetQueryParams.forEach((value, key) => {
+      imageURLObj.searchParams.set(key, value);
+    });
+    imageURL = stringifyPlaceholderURL(imageURLObj);
+    srcSets = srcSets.map((srcSet) => {
+      const urlObj = createPlaceholderURL(srcSet.url);
+      imageConfig.assetQueryParams.forEach((value, key) => {
+        urlObj.searchParams.set(key, value);
+      });
+      return {
+        ...srcSet,
+        url: stringifyPlaceholderURL(urlObj)
       };
     });
   }
@@ -774,7 +805,13 @@ const $$Font = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`<style>${unescapeHTML(data.css)}</style>${filteredPreloadData?.map(({ url, type }) => renderTemplate`<link rel="preload"${addAttribute(url, "href")} as="font"${addAttribute(`font/${type}`, "type")} crossorigin>`)}`;
 }, "C:/Users/ivanh/Downloads/biotraining/softwebsite-biotraining-frontend-prod001/node_modules/astro/components/Font.astro", void 0);
 
-const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"responsiveStyles":false};
+const assetQueryParams = undefined;
+							const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"responsiveStyles":false};
+							Object.defineProperty(imageConfig, 'assetQueryParams', {
+								value: assetQueryParams,
+								enumerable: false,
+								configurable: true,
+							});
 							const getImage = async (options) => await getImage$1(options, imageConfig);
 
 const fnv1a52 = (str) => {

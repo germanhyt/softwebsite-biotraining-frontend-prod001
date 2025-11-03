@@ -1,4 +1,4 @@
-import { e as createAstro, f as createComponent, h as addAttribute, k as renderHead, l as renderSlot, r as renderTemplate, n as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_r59jpfp4.mjs';
+import { e as createAstro, f as createComponent, h as addAttribute, k as renderHead, l as renderSlot, r as renderTemplate, n as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_DTxNM8k7.mjs';
 import 'clsx';
 /* empty css                                 */
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
