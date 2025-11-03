@@ -12,7 +12,11 @@
     "@astrojs/react": "^4.4.0",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
+<<<<<<< HEAD
     "@emailjs/browser": "^4.4.1",
+=======
+    "@emailjs/nodejs": "^5.0.2",
+>>>>>>> 7718aad8b04e909b033ef121b5d0f0f687f17cba
     "@fontsource/manrope": "^5.2.8",
     "@fontsource/work-sans": "^5.2.8",
     "astro": "^5.15.1",
