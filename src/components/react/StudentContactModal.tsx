@@ -56,22 +56,26 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
             exit={{ opacity: 0, scale: 0.9 }}
             className="fixed inset-0 flex items-center justify-center z-[9999] p-4"
           >
-            <div className="bg-white rounded-3xl w-full max-w-xl p-8 relative max-h-[90vh] overflow-y-auto">
+            <div className="bg-white rounded-3xl w-full max-w-xl relative max-h-[90vh] flex flex-col">
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-6 right-6 text-2xl font-bold text-black hover:text-gray-600 transition"
+                className="absolute top-6 right-6 text-2xl font-bold text-black hover:text-gray-600 transition z-10"
               >
                 ×
               </button>
 
               {/* Title */}
-              <h2 className="text-2xl md:text-3xl font-heading font-semibold text-center text-black mb-6 mt-4">
-                Bríndanos tus datos y nos comunicaremos contigo
-              </h2>
+              <div className="px-8 pt-8 pb-4">
+                <h2 className="text-2xl md:text-3xl font-heading font-semibold text-center text-black mt-4">
+                  Bríndanos tus datos y nos comunicaremos contigo
+                </h2>
+              </div>
 
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Scrollable Form Content */}
+              <div className="px-8 pb-8 overflow-y-auto modal-scroll">
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Campos ocultos de Formspree */}
                 <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
                 {/* <input type="hidden" name="_template" value="table" />
@@ -86,7 +90,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                     placeholder="Nombres y apellidos"
                     required
                     minLength={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
                   />
                 </div>
 
@@ -95,7 +99,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                   <select
                     name="Tipo de Perfil"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
                   >
                     <option value="">Seleccione si es estudiante o profesional</option>
                     <option value="estudiante">Estudiante</option>
@@ -110,7 +114,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                     placeholder="Indique su especialidad"
                     required
                     minLength={3}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
                   />
                 </div>
 
@@ -119,7 +123,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                   <select
                     name="Área de Trabajo"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
                   >
                     <option value="">Seleccione si trabaja en diagnóstico o investigación</option>
                     <option value="diagnostico">Diagnóstico</option>
@@ -149,6 +153,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                   </button>
                 </div>
               </form>
+              </div>
             </div>
           </motion.div>
         </>

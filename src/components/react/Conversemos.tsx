@@ -67,7 +67,7 @@ const Conversemos: React.FC = () => {
                   placeholder="Nombres y apellidos"
                   required
                   minLength={3}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
@@ -79,7 +79,7 @@ const Conversemos: React.FC = () => {
                   placeholder="Especialidad"
                   required
                   minLength={2}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
@@ -91,7 +91,7 @@ const Conversemos: React.FC = () => {
                   placeholder="¿Cuál es tu ocupación actual?"
                   required
                   minLength={3}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
@@ -103,7 +103,7 @@ const Conversemos: React.FC = () => {
                   required
                   minLength={10}
                   rows={2}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
@@ -115,7 +115,7 @@ const Conversemos: React.FC = () => {
                   required
                   minLength={10}
                   rows={2}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
@@ -127,7 +127,7 @@ const Conversemos: React.FC = () => {
                   required
                   minLength={15}
                   rows={4}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none transition-all"
+                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  resize-none transition-all"
                 />
               </div>
 

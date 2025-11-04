@@ -99,3 +99,28 @@
 .swal-high-zindex .swal2-container {
   z-index: 99999 !important;
 }
+
+/* Estilos personalizados para scrollbar de modales */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #E1525F #f1f1f1;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #AB323D 0%, #E1525F 100%);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #8B1E29 0%, #C13E4C 100%);
+}

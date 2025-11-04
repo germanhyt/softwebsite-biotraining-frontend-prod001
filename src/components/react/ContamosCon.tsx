@@ -74,7 +74,7 @@ const stats: StatItem[] = [
             <div className="text-[2.75rem] sm:text-[2.5rem] font-bold">+100</div>
         ),
         title: '',
-        description: 'Contamos con más de 100 alumnos ya capacitados con nuestra metodología.',
+        description: 'Más de 100 alumnos ya capacitados con nuestra metodología.',
     },
 ];
 

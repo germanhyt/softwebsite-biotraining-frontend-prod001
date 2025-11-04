@@ -155,7 +155,7 @@ const Courses: React.FC = () => {
 
                   {/* Content */}
                   <div className="p-8 space-y-4">
-                    <h3 className="min-h-[7.2rem] lg:min-h-[10.2rem] 2xl:min-h-[7.2rem] pr-10 lg:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.35rem] font-semibold leading-[1.2] ">
+                    <h3 className="min-h-[7.2rem] lg:min-h-[10.2rem] 2xl:min-h-[7.2rem] pr-10 lg:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 3xl:text-[1.35rem] font-semibold leading-[1.2] ">
                       {course.title}
                     </h3>
                     {/* Tags */}
@@ -171,7 +171,7 @@ const Courses: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-text-secondary text-sm leading-relaxed min-h-[6rem]">
+                    <p className="text-text-secondary text-sm leading-relaxed min-h-[6rem] lg:min-h-[8.5rem] 2xl:min-h-[6rem]">
                       {course.description}
                     </p>
                     <div className="w-full flex justify-center pt-4">

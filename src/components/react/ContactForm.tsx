@@ -108,7 +108,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 placeholder="Nombres y apellidos"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2"
               />
 
               <input
@@ -118,7 +118,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 placeholder="Especialidad"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2"
               />
 
               <input
@@ -127,14 +127,14 @@ const ContactForm: React.FC = () => {
                 value={formData.ocupacion}
                 onChange={handleChange}
                 placeholder="¿Cuál es tu ocupación actual?"
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2"
               />
 
               <select
                 name="formato"
                 value={formData.formato}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2"
               >
                 <option value="" className="text-gray-900">¿Cuál es tu preferencia respecto al formato de un curso/capacitación?</option>
                 <option value="virtual" className="text-gray-900">Virtual</option>
@@ -146,7 +146,7 @@ const ContactForm: React.FC = () => {
                 name="modalidad"
                 value={formData.modalidad}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2"
               >
                 <option value="" className="text-gray-900">¿Cuál es tu preferencia respecto a la modalidad?</option>
                 <option value="en-vivo" className="text-gray-900">En vivo</option>
@@ -160,7 +160,7 @@ const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 resize-none"
               />
 
               <div className="pt-4">
