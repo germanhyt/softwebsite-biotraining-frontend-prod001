@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
                                             <img
                                                 src={image.src}
                                                 alt={`Profesionales en biotecnología ${index + 1}`}
-                                                className="w-full h-full object-cover"
+                                                className="w-[100%] h-[28rem] object-cover"
                                             />
                                         </SwiperSlide>
                                     ))
