@@ -26,7 +26,7 @@ const courses: Course[] = [
   {
     id: '1',
     title: 'QPCR - EN EL DIAGNÓSTICO Y EN LA INVESTIGACIÓN',
-    description: 'Este curso conocerás el uso de la Reacción en Cadena de la Polimerasa en Tiempo Real (qPCR).',
+    description: 'Este curso conocerás el uso de la Reacción en Cadena de la Polimerasa en Tiempo Real (qPCR), una herramienta clave en la biología molecular moederna.',
     image: qpcrImg,
     isVirtual: true,
     isLive: true,
@@ -42,7 +42,7 @@ const courses: Course[] = [
   {
     id: '3',
     title: 'EXPLORACIÓN Y ANÁLISIS CON BASES DE DATOS BIOLÓGICAS',
-    description: 'Descubre cómo aprovechar el potencial de los datos biológicos (Primers) para experimentos de PCR y qPCR con precisión profesional.',
+    description: 'Descubre cómo aprovechar el potencial de las base de datos biológicas para la investigación científica y la innovación tecnológica.',
     image: exploracionImg,
     isVirtual: true,
     isLive: true,
@@ -173,20 +173,25 @@ const Courses: React.FC = () => {
                     </div>
                     <p className="text-text-secondary text-sm leading-relaxed min-h-[6rem] lg:min-h-[8.5rem] 2xl:min-h-[6rem]">
                       {course.description}
+
+                      <div className='inline cursor-pointer'>
+                        <span className='text-primary-500'> Ver más</span>
+                      </div>
                     </p>
-                    <div className="w-full flex justify-center pt-4">
-                      <Button
-                        onClick={() => {
-                          setCourseInterested(course.title);
-                          setIsStudentModalOpen(true);
-                        }}
-                        variant="primary"
-                      >
-                        Inscríbete
-                      </Button>
-                    </div>
                   </div>
+
                 </motion.div>
+                <div className="w-full flex justify-center pt-4">
+                  <Button
+                    onClick={() => {
+                      setCourseInterested(course.title);
+                      setIsStudentModalOpen(true);
+                    }}
+                    variant="primary"
+                  >
+                    Inscríbete
+                  </Button>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
