@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Biotraining Academy',
   description: 'Formación profesional en biotecnología y ciencias de la salud',
   url: 'https://www.biotraining.pe',
-  ogImage: '/og-image.jpg',
+  ogImage: '/favicon.webp',
   links: {
     facebook: 'https://facebook.com/biotraining',
     instagram: 'https://instagram.com/biotraining',
@@ -10,8 +10,8 @@ export const siteConfig = {
     youtube: 'https://youtube.com/biotraining',
   },
   contact: {
-    phone: '969 977 934',
-    email: 'ktalweb.peru@gmail.com',
+    phone: '+51 969 977 934',
+    email: 'informes.biotraining@gmail.com',
     whatsapp: '+51969977934',
   },
   navigation: [

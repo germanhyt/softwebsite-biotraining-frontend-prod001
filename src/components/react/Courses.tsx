@@ -12,6 +12,8 @@ import diagnosticoImg from '../../assets/img/section-curso_diagnostico-molecular
 import Button from './Button';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import StudentContactModal from './StudentContactModal';
+import CourseDetailModal from './CourseDetailModal';
+import type { CourseDetail } from './CourseDetailModal';
 
 interface Course {
   id: string;
@@ -20,6 +22,7 @@ interface Course {
   image: any;
   isVirtual: boolean;
   isLive: boolean;
+  detail: CourseDetail;
 }
 
 const courses: Course[] = [
@@ -30,6 +33,36 @@ const courses: Course[] = [
     image: qpcrImg,
     isVirtual: true,
     isLive: true,
+    detail: {
+      intro: 'Descubre cómo aprovechar el potencial de las bases de datos biológicas para la investigación científica y la innovación biomédica.',
+      learningTitle: '¿Qué aprenderás?',
+      sections: [
+        {
+          title: 'Fundamentos de la reacción de PCR',
+          items: [
+            'Etapas y componentes de la reacción de PCR end point. Visualización e interpretación del producto.',
+            'Problemas frecuentes y troubleshooting.',
+          ],
+        },
+        {
+          title: 'Adaptación a PCR Cuantitativa',
+          items: [
+            'PCR en d-point vs. qPCR: Cq como unidad informativa.',
+            'Fluorescencia como magnitud analítica.',
+            'Plots de fusión y análisis por curvas de melting.',
+          ],
+        },
+        {
+          title: 'Aplicaciones',
+          items: [
+            'Identificación de dominios conservados y motivos funcionales.',
+            'Exploración de la estructura tridimensional de proteínas.',
+            'Estrategias para la interpretación analítica de resultados.',
+          ],
+        },
+      ],
+      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+    },
   },
   {
     id: '2',
@@ -38,6 +71,32 @@ const courses: Course[] = [
     image: disenoImg,
     isVirtual: true,
     isLive: true,
+    detail: {
+      intro: 'Aprende a diseñar y evaluar oligonucleótidos (primers) para experimentos de PCR y qPCR con precisión profesional.',
+      learningTitle: '¿Qué aprenderás?',
+      sections: [
+        {
+          title: 'Estrategias de optimización avanzadas',
+          items: [
+            'Control de contaminación por gDNA: Diseño en unión exón - exón (Span en exón - exón junction) y diseño entre intrones (Span en intron).',
+            'Diseño diferencial entre isoformas.',
+          ],
+        },
+        {
+          title: 'Diseño asistido con herramientas on-line',
+          items: [
+            'Validación y optimización de primers con Primer - BLAST, Primer3 y Oligo Analyzer, para el análisis de especificidad y predicción de estructuras secundarias.',
+          ],
+        },
+        {
+          title: 'Casos de estudio y troubleshooting',
+          items: [
+            'Optimización y adaptación para variantes de la PCR (RT - PCR y qPCR). Diseño de tetraprimers para detección de SNPs. Ajuste de especificidad por PCR touchdown.',
+          ],
+        },
+      ],
+      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+    },
   },
   {
     id: '3',
@@ -46,6 +105,36 @@ const courses: Course[] = [
     image: exploracionImg,
     isVirtual: true,
     isLive: true,
+    detail: {
+      intro: 'Descubre cómo aprovechar el potencial de las bases de datos biológicas para la investigación científica y la innovación biomédica.',
+      learningTitle: '¿Qué aprenderás?',
+      sections: [
+        {
+          title: 'Introducción a las ciencias Ómicas',
+          items: [
+            'Tecnologías High - Throughput para la generación de información.',
+            'Introducción a las bases de datos biológicas: Navegación en plataformas clave como NCBI y Protein Data Bank.',
+          ],
+        },
+        {
+          title: 'Herramientas y análisis esenciales',
+          items: [
+            'Estrategias para identificar y descargar secuencias relevantes.',
+            'Alineamiento simple y múltiple de secuencia de ADN y proteínas.',
+            'Introducción al modelamiento y predicción de estructuras 3D.',
+          ],
+        },
+        {
+          title: 'Aplicaciones clásicas y casos de estudios',
+          items: [
+            'Identificación de dominios conservados y motivos funcionales.',
+            'Exploración de la estructura tridimensional de proteínas.',
+            'Estrategias para la interpretación analítica de resultados.',
+          ],
+        },
+      ],
+      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+    },
   },
   {
     id: '4',
@@ -54,6 +143,36 @@ const courses: Course[] = [
     image: diagnosticoImg,
     isVirtual: true,
     isLive: true,
+    detail: {
+      intro: 'Descubre cómo aprovechar el potencial de las bases de datos biológicas para la investigación científica y la innovación biomédica.',
+      learningTitle: '¿Qué aprenderás?',
+      sections: [
+        {
+          title: 'Introducción a las ciencias Ómicas',
+          items: [
+            'Tecnologías High - Throughput para la generación de información.',
+            'Introducción a las bases de datos biológicas: Navegación en plataformas clave como NCBI y Protein Data Bank.',
+          ],
+        },
+        {
+          title: 'Herramientas y análisis esenciales',
+          items: [
+            'Estrategias para identificar y descargar secuencias relevantes.',
+            'Alineamiento simple y múltiple de secuencia de ADN y proteínas.',
+            'Introducción al modelamiento y predicción de estructuras 3D.',
+          ],
+        },
+        {
+          title: 'Aplicaciones clásicas y casos de estudios',
+          items: [
+            'Identificación de dominios conservados y motivos funcionales.',
+            'Exploración de la estructura tridimensional de proteínas.',
+            'Estrategias para la interpretación analítica de resultados.',
+          ],
+        },
+      ],
+      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+    },
   },
 ];
 
@@ -67,6 +186,10 @@ const BREAKPOINTS = {
 const Courses: React.FC = () => {
 
   const [courseInterested, setCourseInterested] = useState<string | undefined>(undefined);
+  const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
+  const selectedCourse = selectedCourseId
+    ? courses.find((course) => course.id === selectedCourseId)
+    : undefined;
 
   const swiperRefs = useRef<{ [key: string]: any }>({});
   const [showButtons, setShowButtons] = useState(() => {
@@ -149,7 +272,8 @@ const Courses: React.FC = () => {
                     <img
                       src={course.image.src}
                       alt={course.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500  rounded-2xl"
+                      // className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500  rounded-t-2xl"
+                      className="w-full h-full object-cover rounded-t-2xl"
                     />
                   </div>
 
@@ -173,11 +297,14 @@ const Courses: React.FC = () => {
                     </div>
                     <p className="text-text-secondary text-sm leading-relaxed min-h-[6rem] lg:min-h-[8.5rem] 2xl:min-h-[6rem]">
                       {course.description}
-
-                      <div className='inline cursor-pointer'>
-                        <span className='text-primary-500'> Ver más</span>
-                      </div>
                     </p>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCourseId(course.id)}
+                      className="text-primary-500 font-semibold text-sm hover:text-primary-600 transition-colors"
+                    >
+                      Ver más
+                    </button>
                   </div>
 
                 </motion.div>
@@ -230,6 +357,18 @@ const Courses: React.FC = () => {
         isOpen={isStudentModalOpen}
         onClose={() => setIsStudentModalOpen(false)}
         courseInterested={courseInterested}
+      />
+
+      <CourseDetailModal
+        isOpen={Boolean(selectedCourse)}
+        onClose={() => setSelectedCourseId(null)}
+        courseTitle={selectedCourse?.title || ''}
+        detail={selectedCourse?.detail || null}
+        onEnroll={(title) => {
+          setSelectedCourseId(null);
+          setCourseInterested(title);
+          setIsStudentModalOpen(true);
+        }}
       />
     </section >
   );
