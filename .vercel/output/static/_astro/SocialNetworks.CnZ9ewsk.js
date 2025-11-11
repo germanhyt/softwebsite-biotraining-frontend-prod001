@@ -1,4 +1,0 @@
-import{j as t}from"./jsx-runtime.D_zvdyIk.js";import{F as e}from"./index.FwQU_blz.js";import{m as r}from"./proxy.C9gwWTI2.js";import"./index.7in8nkh5.js";const s=()=>t.jsx(t.Fragment,{children:t.jsx(r.div,{initial:{opacity:0},animate:{opacity:1},transition:{duration:.5},className:`\r
-        md:animate-pulse z-[60] w-20 h-20 fixed hover:animate-none hover:scale-[1.1] transition duration-500  bottom-5  right-5 md:right-20\r
-        flex items-center justify-center rounded-full bg-[#24d367]  hover:bg-[#24d367] group\r
-        `,children:t.jsx("a",{target:"_blank",rel:"noopener noreferrer","aria-label":"Contáctanos",href:"https://api.whatsapp.com/send?phone=+51969977934&text=Hola👋,%20me%20puede%20brindar%20más%20información sobre los cursos...",children:t.jsx(e,{className:"text-5xl text-white"})})})});export{s as default};
