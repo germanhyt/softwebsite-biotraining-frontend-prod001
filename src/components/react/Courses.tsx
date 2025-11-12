@@ -95,7 +95,8 @@ const courses: Course[] = [
           ],
         },
       ],
-      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+      certificateNote:
+        ' Se ortogará un certificado de finalización por 16 hrs. lectivas (1 crédito académico), emitido por Biotraining.'
     },
   },
   {
@@ -144,34 +145,33 @@ const courses: Course[] = [
     isVirtual: true,
     isLive: true,
     detail: {
-      intro: 'Descubre cómo aprovechar el potencial de las bases de datos biológicas para la investigación científica y la innovación biomédica.',
+      intro: 'En este curso conocerás las tecnologías de amplificación isotérmica (LAMP, RPA, NASBA) aplicadas al diagnóstico molecular en el punto de atención (POC).',
       learningTitle: '¿Qué aprenderás?',
       sections: [
         {
-          title: 'Introducción a las ciencias Ómicas',
+          title: 'Enfoque Point - of - care (POC) en salud',
           items: [
-            'Tecnologías High - Throughput para la generación de información.',
-            'Introducción a las bases de datos biológicas: Navegación en plataformas clave como NCBI y Protein Data Bank.',
+            'Importancia del diagnóstico POC en salud pública y medicina rural.',
+            'Ventajas y limitaciones del diagnóstico molecular convencional (basado en PCR) en entornos rurales.',
           ],
         },
         {
-          title: 'Herramientas y análisis esenciales',
+          title: 'Amplificación LAMP/RPA y lectura rápida',
           items: [
-            'Estrategias para identificar y descargar secuencias relevantes.',
-            'Alineamiento simple y múltiple de secuencia de ADN y proteínas.',
-            'Introducción al modelamiento y predicción de estructuras 3D.',
+            'Fundamentos de los sistemas de amplificación LAMP, RPA y otros.',
+            'Interpretación rápida por técnicas colorimétricas.',
+            'Inmunocromatografía y sistemas basados en CRISPR/Cas.',
           ],
         },
         {
-          title: 'Aplicaciones clásicas y casos de estudios',
+          title: 'Casos de estudio y aplicaciones prácticas',
           items: [
-            'Identificación de dominios conservados y motivos funcionales.',
-            'Exploración de la estructura tridimensional de proteínas.',
-            'Estrategias para la interpretación analítica de resultados.',
+            'Aplicaciones prácticas: Brotes, zonas remotas, vigilancia comunitaria (COVID-19, Malaria, VIH, Dengue).',
+            'Integración de los sistemas POC con tecnologías de la información.',
           ],
         },
       ],
-      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VII Lima del Colegio de Biólogos del Perú por 16 hrs. lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
     },
   },
 ];

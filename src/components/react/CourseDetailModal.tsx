@@ -62,7 +62,7 @@ const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                 ×
               </button>
 
-              <div className="px-10 pt-12 pb-6">
+              <div className="px-10 pt-12 pb-6 ">
                 {/* <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-500 mb-2">
                   Curso especializado+
                 </p> */}
@@ -74,7 +74,7 @@ const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                 </p>
               </div>
 
-              <div className="px-10 pb-8 overflow-y-auto modal-scroll">
+              <div className="px-10 pb-8 overflow-y-auto modal-scroll ">
                 <div className="space-y-8">
                   <div>
                     <h3 className="text-base sm:text-xl font-heading font-semibold text-gray-900 mb-4">

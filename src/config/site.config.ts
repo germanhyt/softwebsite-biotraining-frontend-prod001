@@ -4,10 +4,10 @@ export const siteConfig = {
   url: 'https://www.biotraining.pe',
   ogImage: '/favicon.webp',
   links: {
-    facebook: 'https://facebook.com/biotraining',
-    instagram: 'https://instagram.com/biotraining',
-    linkedin: 'https://linkedin.com/company/biotraining',
-    youtube: 'https://youtube.com/biotraining',
+    facebook: 'https://www.facebook.com/biotrainingpe',
+    instagram: 'https://www.instagram.com/biotrainingpe?igsh=YjU3cDhtdHJvZng=',
+    linkedin: 'https://www.linkedin.com/company/biotrainingpe',
+    youtube: 'https://www.youtube.com/@biotrainingpe',
   },
   contact: {
     phone: '+51 969 977 934',
