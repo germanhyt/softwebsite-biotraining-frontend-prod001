@@ -12,7 +12,16 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      // filter: (page) => !page.includes("/admin/"), // Excluir
+      // customPages: [
+      //   "https://innovabcp2025.com/",
+      //   "https://innovabcp2025.com/preguntas-frecuentes",
+      // ],
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date("2025-11-12"),
+    }),
   ],
   output: "static",
 });
