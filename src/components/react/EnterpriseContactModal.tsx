@@ -139,11 +139,15 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
                     >
                       <option value="">Seleccione el área o tipo de capacitación de interés</option>
-                      <option value="biologia_molecular">Biología Molecular</option>
+                      {/* <option value="biologia_molecular">Biología Molecular</option>
                       <option value="diagnostico_molecular">Diagnóstico Molecular</option>
                       <option value="biotecnologia">Biotecnología</option>
                       <option value="ciencias_salud">Ciencias de la Salud</option>
-                      <option value="otro">Otro</option>
+                      <option value="otro">Otro</option> */}
+                      <option value="qpcr_diagnostico">QPCR </option>
+                      <option value="diseno_optimizacion">DISEÑO Y OPTIMIZACIÓN DE PRIMERS PARA LA PCR</option>
+                      <option value="exploracion_bases_datos">EXPLORACION Y ANALISIS DE BASES DE DATOS BIOLOGICAS</option>
+                      <option value="diagnostico_molecular_poc">DIAGNÓSTICO MOLECULAR POC</option>
                     </select>
                   </div>
 

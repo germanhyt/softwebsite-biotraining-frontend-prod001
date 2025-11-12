@@ -7,7 +7,7 @@ export const siteConfig = {
     facebook: 'https://www.facebook.com/biotrainingpe',
     instagram: 'https://www.instagram.com/biotrainingpe?igsh=YjU3cDhtdHJvZng=',
     linkedin: 'https://www.linkedin.com/company/biotrainingpe',
-    youtube: 'https://www.youtube.com/@biotrainingpe',
+    // youtube: 'https://www.youtube.com/@biotrainingpe',
   },
   contact: {
     phone: '+51 969 977 934',

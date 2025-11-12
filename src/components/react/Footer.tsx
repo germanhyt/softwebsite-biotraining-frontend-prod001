@@ -80,11 +80,11 @@ const Footer: React.FC = () => {
                 <span className="sr-only">Instagram</span>
                 <FaInstagram className="w-5 h-5" />
               </a>
-              <a href={siteConfig.links.youtube} target="_blank" rel="noopener noreferrer"
+              {/* <a href={siteConfig.links.youtube} target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
                 <span className="sr-only">YouTube</span>
                 <FaYoutube className="w-5 h-5" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
