@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css';
-import { defaultSEO, type SEOConfig } from '../config/seoConfig';
+import "../styles/global.css";
+import { defaultSEO, type SEOConfig } from "../config/seoConfig";
 
 interface Props {
   seo?: Partial<SEOConfig>;
@@ -22,30 +22,67 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- SEO Meta Tags -->
     <title>{mergedSEO.title}</title>
     <meta name="description" content={mergedSEO.description} />
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph -->
-    <meta property="og:type" content={mergedSEO.og?.type || 'website'} />
+    <meta property="og:type" content={mergedSEO.og?.type || "website"} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={mergedSEO.og?.title || mergedSEO.title} />
-    <meta property="og:description" content={mergedSEO.og?.description || mergedSEO.description} />
-    {mergedSEO.og?.image && <meta property="og:image" content={mergedSEO.og.image} />}
-    
+    <meta
+      property="og:title"
+      content={mergedSEO.og?.title || mergedSEO.title}
+    />
+    <meta
+      property="og:description"
+      content={mergedSEO.og?.description || mergedSEO.description}
+    />
+    {
+      mergedSEO.og?.image && (
+        <meta property="og:image" content={mergedSEO.og.image} />
+      )
+    }
+
     <!-- Twitter -->
-    <meta name="twitter:card" content={mergedSEO.twitter?.card || 'summary_large_image'} />
-    {mergedSEO.twitter?.site && <meta name="twitter:site" content={mergedSEO.twitter.site} />}
-    {mergedSEO.twitter?.creator && <meta name="twitter:creator" content={mergedSEO.twitter.creator} />}
-    
+    <meta
+      name="twitter:card"
+      content={mergedSEO.twitter?.card || "summary_large_image"}
+    />
+    {
+      mergedSEO.twitter?.site && (
+        <meta name="twitter:site" content={mergedSEO.twitter.site} />
+      )
+    }
+    {
+      mergedSEO.twitter?.creator && (
+        <meta name="twitter:creator" content={mergedSEO.twitter.creator} />
+      )
+    }
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
+
+    <link rel="apple-touch-icon" href="/favicon.webp" />
+
     <!-- Fonts Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta name="robots" content={mergedSEO.robots || "index, follow"} />
+
+    <link
+      rel="canonical"
+      href={mergedSEO.canonicalUrl || "https://www.biotraining.pe"}
+    />
+    <link rel="apple-touch-icon" href="/favicon.webp" />
+    <meta
+      name="keywords"
+      content={mergedSEO.keywords ||
+        "biotecnología, ciencias de la salud, cursos, capacitaciones, certificaciones, biólogos, profesionales, expertos, prácticas, virtuales, en vivo, expertos del sector, metodología práctica, certificación reconocida, formación profesional, biotraining academy, biotraining, biotrainingpe, biotraining.pe"}
+    />
+    <meta name="author" content={mergedSEO.author || "Biotraining Academy"} />
   </head>
   <body>
     <slot />

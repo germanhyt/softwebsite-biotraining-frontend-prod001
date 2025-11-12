@@ -13,6 +13,10 @@ export interface SEOConfig {
     site?: string;
     creator?: string;
   };
+  robots?: string;
+  canonicalUrl?: string;
+  keywords?: string;
+  author?: string;
 }
 
 export const defaultSEO: SEOConfig = {
@@ -30,6 +34,12 @@ export const defaultSEO: SEOConfig = {
     site: '@biotraining',
     creator: '@biotraining',
   },
+
+
+  robots: 'index, follow',
+  canonicalUrl: 'https://www.biotraining.pe',
+  keywords: 'biotecnología, ciencias de la salud, cursos, capacitaciones, certificaciones, biólogos, profesionales, expertos, prácticas, virtuales, en vivo, expertos del sector, metodología práctica, certificación reconocida, formación profesional, biotraining academy, biotraining, biotrainingpe, biotraining.pe',
+  author: 'Biotraining Academy',
 };
 
 export const pageSEO = {
