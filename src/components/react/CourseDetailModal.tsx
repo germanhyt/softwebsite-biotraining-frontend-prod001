@@ -35,6 +35,28 @@ const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
   //   }
   // }, [onEnroll, courseTitle]);
 
+  const renderWithHighlights = (
+    text: string,
+    phrases?: string[]
+  ): React.ReactNode => {
+    if (!phrases || phrases.length === 0) return text;
+    // Prepare case-insensitive matching
+    const lowerSet = new Set(phrases.map((p) => p.toLowerCase()));
+    const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const pattern = new RegExp(`(${phrases.map(escapeRegExp).join('|')})`, 'gi');
+    return text.split(pattern).map((part, i) => {
+      const match = lowerSet.has(part.toLowerCase());
+      return match ? (
+        <strong key={i} className="font-semibold">
+          {part}
+        </strong>
+      ) : (
+        <React.Fragment key={i}>{part}</React.Fragment>
+      );
+    });
+  };
+
+
   return (
     <AnimatePresence>
       {isOpen && detail && (
@@ -104,7 +126,9 @@ const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                     <div className="border border-black rounded-2xl p-2 sm:p-4 text-sm leading-relaxed">
                       <div className="flex items-center gap-4">
                         <VscVerified className="h-[6rem] sm:h-[5rem] w-[6rem] sm:w-[5rem] text-primary-500" />
-                        <p className="text-xs sm:text-sm">{detail.certificateNote}</p>
+                        <p className="text-xs sm:text-sm">
+                          {renderWithHighlights(detail.certificateNote, ['Colegio de Biólogos del Perú'])}
+                        </p>
                       </div>
                     </div>
                   </div>
