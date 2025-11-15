@@ -78,19 +78,19 @@ const IncentivandoAprendizaje: React.FC = () => {
   return (
     <section ref={sectionRef} id="conocenos" className="py-20 bg-white">
       <div className="ccontainer">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-[56rem] mx-auto">
+        <div className="grid md:grid-cols-11 gap-16 items-center max-w-[56rem] mx-auto">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="px-4 md:px-0 text-center md:text-start space-y-6"
+            className="md:col-span-7 px-4 md:px-0 text-center md:text-start space-y-6 "
           >
-            <h2 className="text-[2.5rem] lg:text-[2.2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] leading-[1.2] font-heading font-semibold text-text-primary ">
+            <h2 className="text-[2.5rem] lg:text-[4rem] xl:text-[4.25rem] leading-[1.1] font-heading font-semibold text-text-primary ">
               Incentivando el aprendizaje y la exigencia
             </h2>
 
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="text-lg text-text-secondary leading-relaxed md:max-w-sm">
               En Biotraining, nuestro objetivo es impulsar tu desarrollo profesional preparando herramientas formativas de alta calidad.
             </p>
           </motion.div>
@@ -100,7 +100,7 @@ const IncentivandoAprendizaje: React.FC = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative md:col-span-4"
           >
             <div className="relative rounded-full overflow-hidden">
               {/* Video */}

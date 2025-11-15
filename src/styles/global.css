@@ -43,7 +43,7 @@
   }
 
   .ccontainer {
-    @apply w-full lg:max-w-[1280px] xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-8 md:px-6 lg:px-8;
+    @apply w-full lg:max-w-[1280px] xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-[2rem] md:px-[2.5rem] lg:px-[4rem] xl:px-[6rem];
   }
 
   .card {

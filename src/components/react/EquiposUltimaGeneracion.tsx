@@ -26,7 +26,7 @@ const EquiposUltimaGeneracion: React.FC = () => {
             </h2>
 
             <p className="text-lg text-text-secondary leading-relaxed">
-              Practica y aprende usando equipos modernos; aplica lo aprendido en los laboratorios con la guía de nuestros expertos para que así obtengas un mayor aprendizaje.
+              Practica y aprende usando equipos modernos, aplica lo aprendido en los laboratorios con la guía de nuestros expertos para que así obtengas un mayor aprendizaje.
             </p>
 
             <ul className="space-y-4">

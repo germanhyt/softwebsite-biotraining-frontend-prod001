@@ -5,7 +5,7 @@ export const siteConfig = {
   ogImage: '/favicon.webp',
   links: {
     facebook: 'https://www.facebook.com/biotrainingpe',
-    instagram: 'https://www.instagram.com/biotrainingpe?igsh=YjU3cDhtdHJvZng=',
+    instagram: 'https://www.instagram.com/biotrainingpe',
     linkedin: 'https://www.linkedin.com/company/biotrainingpe',
     // youtube: 'https://www.youtube.com/@biotrainingpe',
   },

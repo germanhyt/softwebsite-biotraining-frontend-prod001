@@ -31,7 +31,7 @@ const faqItems: FAQItem[] = [
   },
   {
     id: '4',
-    question: '¿Se utilizan laboratorios o equipos de última generación durante las clases?',
+    question: '¿Qué plataforma se utiliza para las clases virtuales?',
     // answer: 'Sí, en nuestras sesiones prácticas utilizamos equipos modernos de última generación. Para los cursos virtuales, proporcionamos demostraciones detalladas y acceso a simuladores. Además, contamos con alianzas con laboratorios especializados donde se pueden realizar prácticas presenciales según el curso.',
     answer: 'Utilizamos principalmente Google Meet para las sesiones en vivo y Google Classroom o Drive para compartir materiales y tareas, garantizando un acceso sencillo y seguro desde cualquier dispositivo.',
     boldPhrases: ['Google Meet', 'Google Classroom', 'Drive']

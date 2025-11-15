@@ -28,8 +28,8 @@ interface Course {
 const courses: Course[] = [
   {
     id: '1',
-    title: 'QPCR - EN EL DIAGNÓSTICO Y EN LA INVESTIGACIÓN',
-    description: 'Este curso conocerás el uso de la Reacción en Cadena de la Polimerasa en Tiempo Real (qPCR), una herramienta clave en la biología molecular moederna.',
+    title: 'qPCR - EN EL DIAGNÓSTICO Y EN LA INVESTIGACIÓN',
+    description: 'Comprende el fundamento de la reacción en cadena de la Polimerasa en tiempo real (qPCR), una herramienta clave en la biología molecular moderna.',
     image: qpcrImg,
     isVirtual: true,
     isLive: true,
@@ -140,7 +140,7 @@ const courses: Course[] = [
   {
     id: '4',
     title: 'DIAGNÓSTICO MOLECULAR POC: AMPLIFICACIÓN ISOTÉRMICA E INTERPRETACIÓN RÁPIDA',
-    description: 'En este curso conocerás las tecnologías de amplificación isotérmica (LAMP, RPA, NASBA) aplicadas al diagnóstico molecular en el punto de atención (POC).',
+    description: 'Explora las tecnologías de amplificación isotérmica (LAMP,RPA,NASBA) aplicadas al diagnóstico molecular en el punto de atención (POC).',
     image: diagnosticoImg,
     isVirtual: true,
     isLive: true,
@@ -279,7 +279,7 @@ const Courses: React.FC = () => {
 
                   {/* Content */}
                   <div className="p-8 space-y-4">
-                    <h3 className="min-h-[7.2rem] lg:min-h-[10.2rem] 2xl:min-h-[7.2rem] pr-10 lg:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.2rem] 3xl:text-[1.35rem] font-semibold leading-[1.2] ">
+                    <h3 className="min-h-[7.2rem] lg:min-h-[10.2rem] 2xl:min-h-[7.2rem] pr-10 lg:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.2rem]  font-semibold leading-[1.2] ">
                       {course.title}
                     </h3>
                     {/* Tags */}

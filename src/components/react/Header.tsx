@@ -42,7 +42,7 @@ const Header: React.FC = () => {
       className="fixed top-0 left-0 right-0 z-[888] bg-white shadow-sm transition-all duration-300 py-4"
     >
       <div className="ccontainer">
-        <div className="flex items-center justify-between gap-24">
+        <div className="flex items-center justify-between gap-16 xs:gap-24">
           {/* Logo */}
           <a href="/" className="flex items-center">
             <img
@@ -53,7 +53,7 @@ const Header: React.FC = () => {
           </a>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center sm:gap-6 2xl:gap-8">
             {siteConfig.navigation.map((item) => (
               <a
                 key={item.name}

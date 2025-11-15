@@ -2,10 +2,15 @@ import React from 'react';
 import { useForm } from '@formspree/react';
 import Swal from 'sweetalert2';
 import Button from './Button';
+import CustomInput from './CustomInput';
+import CustomSelect from './CustomSelect';
+import CustomTextarea from './CustomTextarea';
 
 const Conversemos: React.FC = () => {
   const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_CONVERSEMOS || '');
   const hasShownSuccess = React.useRef(false);
+
+  const [formatoPreferencia, setFormatoPreferencia] = React.useState('');
 
   React.useEffect(() => {
     if (state.succeeded && !hasShownSuccess.current) {
@@ -20,6 +25,7 @@ const Conversemos: React.FC = () => {
         }
       }).then(() => {
         reset();
+        setFormatoPreferencia('');
         hasShownSuccess.current = false;
       });
     }
@@ -58,76 +64,82 @@ const Conversemos: React.FC = () => {
               <input type="hidden" name="_format" value="html" />
               <input type="hidden" name="_email.title" value="Nueva Solicitud de Conversación" />
               <input type="hidden" name="_email.subtitle" value="Un profesional está interesado en conocer más sobre nuestros cursos" /> */}
-              
+
               {/* Name */}
               <div>
-                <input
-                  type="text"
+                <CustomInput
                   name="Nombres y Apellidos"
                   placeholder="Nombres y apellidos"
                   required
                   minLength={3}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
+                />
+              </div>
+
+              <div>
+                <CustomInput
+                  name="Correo Electrónico"
+                  placeholder="Correo electrónico"
+                  type="email"
+                  required
                 />
               </div>
 
               {/* Specialty */}
               <div>
-                <input
-                  type="text"
+                <CustomInput
                   name="Especialidad"
                   placeholder="Especialidad"
                   required
                   minLength={2}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
               {/* Occupation */}
               <div>
-                <input
-                  type="text"
+                <CustomInput
                   name="Ocupación Actual"
                   placeholder="¿Cuál es tu ocupación actual?"
                   required
                   minLength={3}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
               {/* Preference */}
               <div>
-                <textarea
+                <CustomSelect
                   name="Preferencia de Formato"
+                  options={[
+                    { value: 'presencial', label: 'Presencial' },
+                    { value: 'virtual_vivo', label: 'Virtual en vivo' },
+                    { value: 'virtual_grabado', label: 'Virtual sesiones grabadas' }
+                  ]}
                   placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
+                  value={formatoPreferencia}
+                  onChange={(e) => setFormatoPreferencia(e.target.value)}
                   required
-                  minLength={10}
-                  rows={2}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
               {/* Modality */}
               <div>
-                <textarea
+                <CustomTextarea
                   name="Preferencia de Modalidad"
                   placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
                   required
                   minLength={10}
                   rows={2}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  transition-all"
                 />
               </div>
 
               {/* Experience */}
               <div>
-                <textarea
+                <CustomTextarea
                   name="Experiencia Práctica Deseada"
-                  placeholder="¿Qué experiencia práctica te gustaría desarrollar en una próxima capacitación?"
+                  placeholder="¿Qué habilidad te gustaría fortalecer en una próxima capacitación?"
                   required
                   minLength={15}
                   rows={4}
-                  className="w-full px-6 py-3.5 bg-white rounded-lg text-text-primary placeholder-text-secondary/90 focus:outline-none focus:ring-2  resize-none transition-all"
+                  resize={false}
                 />
               </div>
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { useForm } from '@formspree/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
+import CustomSelect from './CustomSelect';
+import CustomInput from './CustomInput';
 
 interface StudentContactModalProps {
   isOpen: boolean;
@@ -17,6 +19,9 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
   const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_STUDENT || '');
   const hasShownSuccess = React.useRef(false);
 
+  const [tipoPerfil, setTipoPerfil] = React.useState('');
+  const [areaTrabajo, setAreaTrabajo] = React.useState('');
+
   React.useEffect(() => {
     if (state.succeeded && !hasShownSuccess.current) {
       hasShownSuccess.current = true;
@@ -30,6 +35,8 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
         }
       }).then(() => {
         reset();
+        setTipoPerfil('');
+        setAreaTrabajo('');
         hasShownSuccess.current = false;
         onClose();
       });
@@ -76,83 +83,93 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
               <div className="px-8 pb-8 overflow-y-auto modal-scroll">
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Campos ocultos de Formspree */}
-                <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
-                {/* <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_format" value="html" />
-                <input type="hidden" name="_email.title" value="Inscripción de Estudiante/Profesional" />
-                <input type="hidden" name="_email.subtitle" value="Un estudiante o profesional está interesado en un curso" /> */}
+                  {/* Campos ocultos de Formspree */}
+                  <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
+                  {/* <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_format" value="html" />
+                  <input type="hidden" name="_email.title" value="Inscripción de Estudiante/Profesional" />
+                  <input type="hidden" name="_email.subtitle" value="Un estudiante o profesional está interesado en un curso" /> */}
 
-                {/* Full Name */}
-                <div>
-                  <input
-                    name="Nombres y Apellidos"
-                    placeholder="Nombres y apellidos"
-                    required
-                    minLength={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
-                  />
-                </div>
+                  {/* Full Name */}
+                  <div>
+                    <CustomInput
+                      name="Nombres y Apellidos"
+                      placeholder="Nombres y apellidos"
+                      required
+                      minLength={5}
+                    />
+                  </div>
 
-                {/* Student Type */}
-                <div>
-                  <select
-                    name="Tipo de Perfil"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
-                  >
-                    <option value="">Seleccione si es estudiante o profesional</option>
-                    <option value="estudiante">Estudiante</option>
-                    <option value="profesional">Profesional</option>
-                  </select>
-                </div>
+                  <div>
+                    <CustomInput
+                      name="Correo Electrónico"
+                      placeholder="Correo electrónico"
+                      type="email"
+                      required
+                    />
+                  </div>
 
-                {/* Speciality */}
-                <div>
-                  <input
-                    name="Especialidad"
-                    placeholder="Indique su especialidad"
-                    required
-                    minLength={3}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
-                  />
-                </div>
+                  {/* Student Type */}
+                  <div className='overflow-hidden'>
+                    <CustomSelect
+                      name="Tipo de Perfil"
+                      options={[
+                        { value: 'estudiante', label: 'Estudiante' },
+                        { value: 'profesional', label: 'Profesional' }
+                      ]}
+                      placeholder="Seleccione si es estudiante o profesional"
+                      value={tipoPerfil}
+                      onChange={(e) => setTipoPerfil(e.target.value)}
+                      required
+                    />
+                  </div>
 
-                {/* Work Area */}
-                <div>
-                  <select
-                    name="Área de Trabajo"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
-                  >
-                    <option value="">Seleccione si trabaja en diagnóstico o investigación</option>
-                    <option value="diagnostico">Diagnóstico</option>
-                    <option value="investigacion">Investigación</option>
-                  </select>
-                </div>
+                  {/* Speciality */}
+                  <div>
+                    <CustomInput
+                      name="Especialidad"
+                      placeholder="Indique su especialidad"
+                      required
+                      minLength={3}
+                    />
+                  </div>
 
-                {/* Course Interest */}
-                <div>
-                  <input
-                    name="Curso de Interés"
-                    placeholder="Curso de interés (Se selecciona automáticamente)"
-                    value={courseInterested}
-                    readOnly
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none bg-gray-50 text-gray-600"
-                  />
-                </div>
+                  {/* Work Area */}
+                  <div>
+                    <CustomSelect
+                      name="Área de Trabajo"
+                      options={[
+                        { value: 'diagnostico', label: 'Diagnóstico' },
+                        { value: 'investigacion', label: 'Investigación' }
+                      ]}
+                      placeholder="Seleccione si trabaja en diagnóstico o investigación"
+                      value={areaTrabajo}
+                      onChange={(e) => setAreaTrabajo(e.target.value)}
+                      required
+                    />
+                  </div>
 
-                {/* Submit Button */}
-                <div className="flex justify-center pt-4">
-                  <button
-                    type="submit"
-                    disabled={state.submitting}
-                    className="px-12 py-3 bg-gradient-to-r from-[#AB323D] to-[#E1525F] text-white font-semibold rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
-                  >
-                    {state.submitting ? 'Enviando...' : 'Enviar'}
-                  </button>
-                </div>
-              </form>
+                  {/* Course Interest */}
+                  <div>
+                    <CustomInput
+                      name="Curso de Interés"
+                      placeholder="Curso de interés (Se selecciona automáticamente)"
+                      value={courseInterested}
+                      readOnly
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex justify-center pt-4">
+                    <button
+                      type="submit"
+                      disabled={state.submitting}
+                      className="px-12 py-3 bg-gradient-to-r from-[#AB323D] to-[#E1525F] text-white font-semibold rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
+                    >
+                      {state.submitting ? 'Enviando...' : 'Enviar'}
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </motion.div>

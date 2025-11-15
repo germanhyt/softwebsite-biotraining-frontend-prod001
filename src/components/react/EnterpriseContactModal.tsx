@@ -2,6 +2,9 @@ import React from 'react';
 import { useForm } from '@formspree/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
+import CustomInput from './CustomInput';
+import CustomSelect from './CustomSelect';
+import CustomTextarea from './CustomTextarea';
 
 interface EnterpriseContactModalProps {
   isOpen: boolean;
@@ -14,6 +17,9 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 }) => {
   const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_ENTERPRISE || '');
   const hasShownSuccess = React.useRef(false);
+
+  const [numeroColaboradores, setNumeroColaboradores] = React.useState('');
+  const [areaCapacitacion, setAreaCapacitacion] = React.useState('');
 
   React.useEffect(() => {
     if (state.succeeded && !hasShownSuccess.current) {
@@ -28,6 +34,8 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
         }
       }).then(() => {
         reset();
+        setNumeroColaboradores('');
+        setAreaCapacitacion('');
         hasShownSuccess.current = false;
         onClose();
       });
@@ -83,72 +91,68 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
                   {/* Company Name */}
                   <div>
-                    <input
+                    <CustomInput
                       name="Nombre de la Empresa"
                       placeholder="Nombre de la empresa"
                       required
                       minLength={3}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
                     />
                   </div>
 
                   {/* Contact */}
                   <div>
-                    <input
+                    <CustomInput
                       name="Teléfono de Contacto"
-                      placeholder="Contacto"
+                      placeholder="Teléfono de contacto"
                       type="tel"
                       required
                       minLength={7}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <input
+                    <CustomInput
                       name="Correo Electrónico"
                       placeholder="Correo electrónico"
                       type="email"
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 "
                     />
                   </div>
 
                   {/* Number of Collaborators */}
                   <div>
-                    <select
+                    <CustomSelect
                       name="Número de Colaboradores"
+                      options={[
+                        { value: '1-10', label: '1-10 colaboradores' },
+                        { value: '11-50', label: '11-50 colaboradores' },
+                        { value: '51-100', label: '51-100 colaboradores' },
+                        { value: '101-500', label: '101-500 colaboradores' },
+                        { value: '500+', label: '500+ colaboradores' }
+                      ]}
+                      placeholder="Indique el número de colaboradores a capacitar"
+                      value={numeroColaboradores}
+                      onChange={(e) => setNumeroColaboradores(e.target.value)}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
-                    >
-                      <option value="">Indique el número de colaboradores a capacitar</option>
-                      <option value="1-10">1-10 colaboradores</option>
-                      <option value="11-50">11-50 colaboradores</option>
-                      <option value="51-100">51-100 colaboradores</option>
-                      <option value="101-500">101-500 colaboradores</option>
-                      <option value="500+">500+ colaboradores</option>
-                    </select>
+                    />
                   </div>
 
                   {/* Training Area */}
                   <div>
-                    <select
+                    <CustomSelect
                       name="Área de Capacitación"
+                      options={[
+                        { value: 'qpcr_diagnostico', label: 'QPCR' },
+                        { value: 'diseno_optimizacion', label: 'DISEÑO Y OPTIMIZACIÓN DE PRIMERS PARA LA PCR' },
+                        { value: 'exploracion_bases_datos', label: 'EXPLORACION Y ANALISIS DE BASES DE DATOS BIOLOGICAS' },
+                        { value: 'diagnostico_molecular_poc', label: 'DIAGNÓSTICO MOLECULAR POC' }
+                      ]}
+                      placeholder="Seleccione el área o tipo de capacitación de interés"
+                      value={areaCapacitacion}
+                      onChange={(e) => setAreaCapacitacion(e.target.value)}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-500 focus:outline-none focus:ring-2 "
-                    >
-                      <option value="">Seleccione el área o tipo de capacitación de interés</option>
-                      {/* <option value="biologia_molecular">Biología Molecular</option>
-                      <option value="diagnostico_molecular">Diagnóstico Molecular</option>
-                      <option value="biotecnologia">Biotecnología</option>
-                      <option value="ciencias_salud">Ciencias de la Salud</option>
-                      <option value="otro">Otro</option> */}
-                      <option value="qpcr_diagnostico">QPCR </option>
-                      <option value="diseno_optimizacion">DISEÑO Y OPTIMIZACIÓN DE PRIMERS PARA LA PCR</option>
-                      <option value="exploracion_bases_datos">EXPLORACION Y ANALISIS DE BASES DE DATOS BIOLOGICAS</option>
-                      <option value="diagnostico_molecular_poc">DIAGNÓSTICO MOLECULAR POC</option>
-                    </select>
+                    />
                   </div>
 
                   {/* Submit Button */}
