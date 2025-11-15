@@ -128,8 +128,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                         { value: '1-10', label: '1-10 colaboradores' },
                         { value: '11-50', label: '11-50 colaboradores' },
                         { value: '51-100', label: '51-100 colaboradores' },
-                        { value: '101-500', label: '101-500 colaboradores' },
-                        { value: '500+', label: '500+ colaboradores' }
+                        { value: '+101', label: '+101 colaboradores' }
                       ]}
                       placeholder="Indique el número de colaboradores a capacitar"
                       value={numeroColaboradores}
