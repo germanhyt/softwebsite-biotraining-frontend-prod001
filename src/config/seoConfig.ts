@@ -26,7 +26,7 @@ export const defaultSEO: SEOConfig = {
   og: {
     title: 'Biotraining Academy - Formación Profesional en Biotecnología',
     description: 'Impulsa tu carrera en biotecnología con formación de nivel profesional. Cursos virtuales en vivo con expertos del sector.',
-    image: '/og-image.jpg',
+    image: '/favicon.webp',
     type: 'website',
   },
   twitter: {

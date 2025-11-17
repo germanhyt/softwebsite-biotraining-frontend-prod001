@@ -21,7 +21,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
+    <link rel="apple-touch-icon" href="/favicon.webp" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- <link
+      rel="canonical"
+      href={mergedSEO.canonicalUrl || "https://www.biotraining.pe"}
+    /> -->
+    <meta
+      name="keywords"
+      content={mergedSEO.keywords ||
+        "biotecnología, ciencias de la salud, cursos, capacitaciones, certificaciones, biólogos, profesionales, expertos, prácticas, virtuales, en vivo, expertos del sector, metodología práctica, certificación reconocida, formación profesional, biotraining academy, biotraining, biotrainingpe, biotraining.pe"}
+    />
+    <meta name="author" content={mergedSEO.author || "Biotraining Academy"} />
 
     <!-- SEO Meta Tags -->
     <title>{mergedSEO.title}</title>
@@ -61,30 +75,51 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       )
     }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
-
-    <link rel="apple-touch-icon" href="/favicon.webp" />
-
     <!-- Fonts Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <meta name="robots" content={mergedSEO.robots || "index, follow"} />
 
-    <link
-      rel="canonical"
-      href={mergedSEO.canonicalUrl || "https://www.biotraining.pe"}
-    />
-    <link rel="apple-touch-icon" href="/favicon.webp" />
-    <meta
-      name="keywords"
-      content={mergedSEO.keywords ||
-        "biotecnología, ciencias de la salud, cursos, capacitaciones, certificaciones, biólogos, profesionales, expertos, prácticas, virtuales, en vivo, expertos del sector, metodología práctica, certificación reconocida, formación profesional, biotraining academy, biotraining, biotrainingpe, biotraining.pe"}
-    />
-    <meta name="author" content={mergedSEO.author || "Biotraining Academy"} />
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-TGM5B6CN" + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TGM5B6CN");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D22XWFN5W"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-0D22XWFN5W");
+    </script>
+    <!-- End Google Analytics 4 -->
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TGM5B6CN"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <slot />
   </body>
 </html>
