@@ -128,7 +128,7 @@ const Testimonials: React.FC = () => {
                     <span className="text-5xl font-serif text-text-primary leading-none">❛❛</span>
 
                     {/* Content */}
-                    <p className="text-text-primary text-[0.95rem] leading-relaxed sm:min-h-[18rem] sm:max-w-[18rem]">
+                    <p className="text-text-primary text-[0.95rem] leading-relaxed min-h-[18rem] sm:max-w-[18rem]">
                       {testimonial.content}
                     </p>
                   </div>
