@@ -18,27 +18,38 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Nancy Castillo',
-    role: 'Egresada de Biología en la facultad de UNMSM.',
-    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
+    name: 'Maríafe Álvarez',
+    role: 'Universidad Nacional de San Agustín',
+    content:
+      'La experiencia fue realmente enriquecedora. La información recibida contribuyó significativamente a mi crecimiento profesional y me permitió aplicar, de forma más sólida, los conocimientos adquiridos en los laboratorios de mi universidad. Me siento muy agradecida por haber sido parte de los cursos y charlas impartidas. Muchas gracias por la oportunidad y por todo lo aprendido.',
   },
   {
     id: '2',
-    name: 'Nancy Castillo',
-    role: 'Egresada de Biología en la facultad de UNMSM.',
-    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
+    name: 'Wendy Herrera',
+    role: 'Universidad Nacional de Trujillo',
+    content:
+      'El curso fue muy dinámico y con una explicación clara y fácil de comprender.',
   },
   {
     id: '3',
-    name: 'Nancy Castillo',
-    role: 'Egresada de Biología en la facultad de UNMSM.',
-    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
+    name: 'Camila Bravo',
+    role: 'Universidad Peruana Cayetano Heredia',
+    content:
+      'Excelente experiencia. La teoría fue explicada de manera secuencial y coherente, mostrando de forma clara la lógica detrás del PCR. Además, se compartieron tips muy útiles y puntos críticos a considerar para obtener buenos resultados en los ensayos.',
   },
   {
     id: '4',
-    name: 'Nancy Castillo',
-    role: 'Egresada de Biología en la facultad de UNMSM.',
-    content: 'Me encantaron las clases, el contenido que te comparten y el acompañamiento en cada duda que tenía fue demasiado bueno. ¡100% recomendado!',
+    name: 'Kory Guamán',
+    role: 'Universidad Peruana Cayetano Heredia',
+    content:
+      'Me encantó. Son cursos muy completos y con profesores excelentes. Siento que reforcé conocimientos y aprendí muchas cosas nuevas.',
+  },
+  {
+    id: '5',
+    name: 'Joel Torres',
+    role: 'Universidad Peruana Cayetano Heredia',
+    content:
+      'El curso de biología molecular me ayudó enormemente a comprender en profundidad las problemáticas asociadas a técnicas como PCR y qPCR, y a mejorar los experimentos que realizaba en el laboratorio.',
   },
 ];
 
@@ -110,27 +121,25 @@ const Testimonials: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="min-h-[24rem] bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 py-6 xl:py-8 mx-4 md:mx-0 px-8 xl:px-6 relative border border-gray-300 h-full"
+                  className="flex flex-col min-h-[32.5rem] bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 py-6 xl:py-8 mx-4 md:mx-0 px-8 xl:px-6 relative border border-gray-300 h-full"
                 >
                   {/* Quote Icon - Large at top left */}
-                  <div className="mb-4">
+                  <div className="mb-4 space-y-4">
                     <span className="text-5xl font-serif text-text-primary leading-none">❛❛</span>
-                  </div>
 
-                  {/* Content */}
-                  <div className="space-y-12 sm:space-y-4">
-                    <p className="text-text-primary text-xl leading-relaxed sm:min-h-[7rem] sm:max-w-[18rem]">
+                    {/* Content */}
+                    <p className="text-text-primary text-[0.95rem] leading-relaxed sm:min-h-[18rem] sm:max-w-[18rem]">
                       {testimonial.content}
                     </p>
+                  </div>
 
-                    <div className="pt-3">
-                      <p className="font-heading font-semibold text-[1.5rem] sm:text-[1rem] 2xl:text-[1.2rem] text-text-primary">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-text-secondary text-[1.2rem] max-w-[14rem]  mt-1">
-                        {testimonial.role}
-                      </p>
-                    </div>
+                  <div className="pt-3">
+                    <p className="font-heading font-semibold text-[1rem] 2xl:text-[1rem] text-text-primary">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-text-secondary text-[0.95rem] max-w-[14rem]  mt-1">
+                      {testimonial.role}
+                    </p>
                   </div>
                 </motion.div>
               </SwiperSlide>
