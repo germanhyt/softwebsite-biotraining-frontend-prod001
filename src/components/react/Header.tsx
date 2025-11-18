@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             <img
               src={logoImage.src}
               alt={siteConfig.name}
-              className="h-12 w-auto"
+              className="h-[2.5rem] sm:h-[3rem] w-auto"
             />
           </a>
 
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
               }}
               className="fixed top-0 right-0 bottom-0 w-full sm:w-[400px] bg-white z-[999] lg:hidden overflow-y-auto"
             >
-              <div className="p-8">
+              <div className="px-8 pt-4">
                 {/* Logo in mobile menu */}
                 <div className="mb-8">
                   <img
