@@ -222,7 +222,7 @@ const Courses: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16  mx-auto max-w-[28rem]"
+          className="text-center mb-16  mx-auto "
         >
           <h2 className="leading-[1.1] text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-4">
             Nuestros cursos especializados
@@ -240,7 +240,7 @@ const Courses: React.FC = () => {
         >
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={24}
+            spaceBetween={18}
             slidesPerView={1}
             navigation
             // pagination={{ clickable: true }}
@@ -254,8 +254,11 @@ const Courses: React.FC = () => {
                 slidesPerView: 3,
               },
               1280: {
+                slidesPerView: 3,
+              },
+              1536: {
                 slidesPerView: 4,
-              }
+              },
             }}
             className="swiper pb-12"
           >
@@ -279,7 +282,7 @@ const Courses: React.FC = () => {
 
                   {/* Content */}
                   <div className="p-8 space-y-4">
-                    <h3 className="min-h-[7.2rem] lg:min-h-[10.2rem] 2xl:min-h-[7.2rem] pr-10 lg:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.2rem]  font-semibold leading-[1.2] ">
+                    <h3 className="min-h-[7.2rem] lg:min-h-[8.2rem] 2xl:min-h-[7.2rem] pr-2 lg:pr-2 xl:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.2rem]  font-semibold leading-[1.2] ">
                       {course.title}
                     </h3>
                     {/* Tags */}
@@ -307,18 +310,19 @@ const Courses: React.FC = () => {
                     </button>
                   </div>
 
+                  <div className="w-full flex justify-center pt-2 pb-6">
+                    <Button
+                      onClick={() => {
+                        setCourseInterested(course.title);
+                        setIsStudentModalOpen(true);
+                      }}
+                      variant="primary"
+                    >
+                      Inscríbete
+                    </Button>
+                  </div>
                 </motion.div>
-                <div className="w-full flex justify-center pt-4">
-                  <Button
-                    onClick={() => {
-                      setCourseInterested(course.title);
-                      setIsStudentModalOpen(true);
-                    }}
-                    variant="primary"
-                  >
-                    Inscríbete
-                  </Button>
-                </div>
+
               </SwiperSlide>
             ))}
           </Swiper>

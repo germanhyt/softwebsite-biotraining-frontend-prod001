@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { siteConfig } from '../../config/site.config';
 import logoImage from '../../assets/img/logo.webp';
@@ -6,14 +6,26 @@ import logoImage from '../../assets/img/logo.webp';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [selectedItem, setSelectedItem] = React.useState<string>('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Set selected item based on current hash
+  useEffect(() => {
+    const setSelectedFromHash = () => {
+      setSelectedItem(window.location.hash);
+    };
+
+    setSelectedFromHash(); // Set on mount
+    window.addEventListener('hashchange', setSelectedFromHash);
+    return () => window.removeEventListener('hashchange', setSelectedFromHash);
   }, []);
 
   // Close menu on escape key
@@ -58,7 +70,8 @@ const Header: React.FC = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="font-sans font-normal text-base text-text-primary hover:text-primary-500 transition-colors"
+                onClick={() => setSelectedItem(item.href)}
+                className={`font-sans font-normal text-base ${selectedItem === item.href ? 'text-primary-500' : 'text-text-primary-500'} hover:text-primary-500 transition-colors`}
               >
                 {item.name}
               </a>
@@ -141,8 +154,11 @@ const Header: React.FC = () => {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + index * 0.05 }}
-                      className="block font-sans font-medium text-xl text-text-primary hover:text-primary-500 transition-colors py-2"
-                      onClick={() => setIsMenuOpen(false)}
+                      className={`block font-sans font-medium text-xl ${selectedItem === item.href ? 'text-primary-500' : 'text-text-primary-500'} hover:text-primary-500 transition-colors py-2`}
+                      onClick={() => {
+                        setSelectedItem(item.href);
+                        setIsMenuOpen(false);
+                      }}
                     >
                       {item.name}
                     </motion.a>

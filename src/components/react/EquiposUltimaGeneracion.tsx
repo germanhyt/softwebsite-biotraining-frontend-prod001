@@ -21,7 +21,7 @@ const EquiposUltimaGeneracion: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h2 className="max-w-[18rem] md:max-w-none text-[2rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold text-text-primary leading-tight">
+            <h2 className="text-center sm:text-start text-[2rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold text-text-primary leading-tight">
               Equipos de última generación
             </h2>
 

@@ -82,29 +82,31 @@ const Hero: React.FC = () => {
                             transition={{ duration: 0.8, delay: 0.3 }}
                             className="w-full lg:w-[45%]"
                         >
-                            <Swiper
-                                modules={[Autoplay, EffectFade]}
-                                effect="fade"
-                                autoplay={{
-                                    delay: 3000,
-                                    disableOnInteraction: false,
-                                }}
-                                loop={true}
-                                speed={1500}
-                                className="max-w-[25rem] lg:max-w-[24rem] xl:max-w-[30rem]  max-h-[24rem] xl:max-h-[30rem] rounded-3xl shadow-2xl overflow-hidden"
-                            >
-                                {
-                                    heroImages.map((image, index) => (
-                                        <SwiperSlide key={index}>
-                                            <img
-                                                src={image.src}
-                                                alt={`Profesionales en biotecnología ${index + 1}`}
-                                                className="w-[100%] h-[28rem] object-cover"
-                                            />
-                                        </SwiperSlide>
-                                    ))
-                                }
-                            </Swiper>
+                            <div className='flex lg:justify-self-end'>
+                                <Swiper
+                                    modules={[Autoplay, EffectFade]}
+                                    effect="fade"
+                                    autoplay={{
+                                        delay: 3000,
+                                        disableOnInteraction: false,
+                                    }}
+                                    loop={true}
+                                    speed={1500}
+                                    className="max-w-[25rem] lg:max-w-[24rem] xl:max-w-[34rem]  max-h-[24rem] xl:max-h-[30rem] rounded-3xl shadow-2xl overflow-hidden"
+                                >
+                                    {
+                                        heroImages.map((image, index) => (
+                                            <SwiperSlide key={index}>
+                                                <img
+                                                    src={image.src}
+                                                    alt={`Profesionales en biotecnología ${index + 1}`}
+                                                    className="w-[100%] h-[28rem] object-cover"
+                                                />
+                                            </SwiperSlide>
+                                        ))
+                                    }
+                                </Swiper>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
