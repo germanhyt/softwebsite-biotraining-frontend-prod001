@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 // icon verified
 import { VscVerified } from "react-icons/vsc";
@@ -29,11 +29,19 @@ const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
   courseTitle,
   detail,
 }) => {
-  // const handleEnroll = React.useCallback(() => {
-  //   if (onEnroll) {
-  //     onEnroll(courseTitle);
-  //   }
-  // }, [onEnroll, courseTitle]);
+
+  // Block scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const renderWithHighlights = (
     text: string,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from '@formspree/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Swal from 'sweetalert2';
@@ -20,6 +20,19 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
   const [numeroColaboradores, setNumeroColaboradores] = React.useState('');
   const [areaCapacitacion, setAreaCapacitacion] = React.useState('');
+
+  // Block scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   React.useEffect(() => {
     if (state.succeeded && !hasShownSuccess.current) {
