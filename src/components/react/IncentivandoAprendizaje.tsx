@@ -84,10 +84,10 @@ const IncentivandoAprendizaje: React.FC = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-7 px-4 md:px-0 text-center md:text-start space-y-6 "
+            className="md:col-span-7 px-4 md:px-0 text-center md:text-start space-y-6"
           >
             <h2 className="text-[2.5rem] lg:text-[2.75rem] xl:text-[3rem] leading-[1.1] font-heading font-semibold text-text-primary ">
-              Aprendizaje real para desafíos reales
+              Aprendizaje real <br /> para desafíos reales
             </h2>
 
             <p className="text-lg text-text-secondary leading-relaxed md:max-w-lg">
