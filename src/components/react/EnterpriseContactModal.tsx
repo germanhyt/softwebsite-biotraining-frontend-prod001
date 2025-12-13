@@ -72,10 +72,11 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
               </button>
 
               {/* Title */}
-              <div className="px-8 pt-8 pb-4">
+              <div className="flex flex-col gap-2 px-8 pt-8 pb-4">
                 <h2 className="text-2xl md:text-3xl font-heading font-semibold text-center text-black mt-4">
-                  Potencia el conocimiento de tu equipo
+                  Capacitemos a tu equipo
                 </h2>
+                <p className='text-gray-600 text-center'>Solicita una propuesta personalizada</p>
               </div>
 
               {/* Scrollable Form Content */}
@@ -84,16 +85,11 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Campos ocultos de Formspree */}
                   <input type="hidden" name="_subject" value="🏢 Nueva Solicitud Empresarial - BioTraining" />
-                  {/* <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_format" value="html" />
-                <input type="hidden" name="_email.title" value="Solicitud de Capacitación Empresarial" />
-                <input type="hidden" name="_email.subtitle" value="Una empresa está interesada en capacitar a su equipo" /> */}
 
-                  {/* Company Name */}
                   <div>
                     <CustomInput
-                      name="Nombre de la Empresa"
-                      placeholder="Nombre de la empresa"
+                      name="Nombre de la Institución o Empresa"
+                      placeholder="Nombre de la institución o empresa"
                       required
                       minLength={3}
                     />
@@ -102,8 +98,8 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                   {/* Contact */}
                   <div>
                     <CustomInput
-                      name="Teléfono de Contacto"
-                      placeholder="Teléfono de contacto"
+                      name="Teléfono o Whatsapp"
+                      placeholder="Teléfono o Whatsapp"
                       type="tel"
                       required
                       minLength={7}
@@ -125,10 +121,10 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                     <CustomSelect
                       name="Número de Colaboradores"
                       options={[
-                        { value: '1-10', label: '1-10 colaboradores' },
-                        { value: '11-50', label: '11-50 colaboradores' },
-                        { value: '51-100', label: '51-100 colaboradores' },
-                        { value: '+101', label: '+101 colaboradores' }
+                        { value: '1-5', label: '1-5 colaboradores' },
+                        { value: '6-10', label: '6-10 colaboradores' },
+                        { value: '11-20', label: '11-20 colaboradores' },
+                        { value: '+20', label: '+20 colaboradores' }
                       ]}
                       placeholder="Indique el número de colaboradores a capacitar"
                       value={numeroColaboradores}
@@ -139,7 +135,7 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
 
                   {/* Training Area */}
                   <div>
-                    <CustomSelect
+                    {/* <CustomSelect
                       name="Área de Capacitación"
                       options={[
                         { value: 'qpcr_diagnostico', label: 'QPCR' },
@@ -151,7 +147,19 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                       value={areaCapacitacion}
                       onChange={(e) => setAreaCapacitacion(e.target.value)}
                       required
-                    />
+                    /> */}
+
+                    {/* // input text con ¿Qué técnica o procedimiento desean fortalecer? */}
+                    <div>
+                      <CustomTextarea
+                        rows={3}
+                        name="Técnica o Procedimiento"
+                        placeholder="¿Qué técnica o procedimiento desean fortalecer?"
+                        required
+                        minLength={3}
+                      />
+                    </div>
+
                   </div>
 
                   {/* Submit Button */}
@@ -161,9 +169,10 @@ const EnterpriseContactModal: React.FC<EnterpriseContactModalProps> = ({
                       disabled={state.submitting}
                       className="px-12 py-3 bg-gradient-to-r from-[#AB323D] to-[#E1525F] text-white font-semibold rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
                     >
-                      {state.submitting ? 'Enviando...' : 'Enviar'}
+                      {state.submitting ? 'Solicitando...' : 'Solicitar propuesta '}
                     </button>
                   </div>
+
                 </form>
               </div>
             </div>

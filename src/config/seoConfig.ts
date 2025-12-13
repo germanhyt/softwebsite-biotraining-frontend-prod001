@@ -60,7 +60,7 @@ export const pageSEO = {
     description: 'Escríbenos para conocer más sobre nuestros cursos y capacitaciones. Estamos aquí para ayudarte a potenciar tu perfil profesional.',
   },
   empresas: {
-    title: 'Cursos para Empresas | Biotraining Academy',
+    title: 'Cursos para instituciones | Biotraining Academy',
     description: 'Formación integral para que tu equipo domine herramientas, equipos y procedimientos clave en salud y biotecnología.',
   },
 };

@@ -26,7 +26,7 @@ const EstudianteProfesional: React.FC = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6 order-1 lg:order-2"
+            className="space-y-6 order-1 lg:order-2 sm:mb-10"
           >
             {/* <h2 className="max-w-[18rem] md:max-w-none text-[2rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[3rem] font-heading font-semibold text-text-primary leading-[1.2]">
               ¿Eres estudiante o profesional
@@ -35,11 +35,12 @@ const EstudianteProfesional: React.FC = () => {
             </h2> */}
 
             <h2 className='text-center sm:text-start max-w-2xl text-[2rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[3rem] font-heading font-semibold text-text-primary leading-[1.2]'>
-              ¿Buscas potenciar tu carrera profesional?
+              Crece como estudiante. Avanza como profesional.
             </h2>
 
             <p className="text-[1.2rem] lg:text-[1rem] xl:text-[1.2rem] 2xl:text-[1.5rem] text-text-secondary leading-[1.6]">
-              En Biotraining conectamos la teoría con la práctica, ofreciendo capacitaciones que fortalecen el perfil académico de los estudiantes y el crecimiento profesional de quienes ya se desempeñan en el sector salud y biotecnología.
+              Nuestros entrenamientos combinan teoría y práctica en biología molecular y biotecnología para que
+              desarrolles <span className="font-semibold">habilidades reales</span> y avances con seguridad en tu campo de acción.
             </p>
           </motion.div>
         </div>

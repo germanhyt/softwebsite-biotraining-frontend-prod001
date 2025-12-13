@@ -73,10 +73,11 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
               </button>
 
               {/* Title */}
-              <div className="px-8 pt-8 pb-4">
-                <h2 className="text-2xl md:text-3xl font-heading font-semibold text-center text-black mt-4">
-                  Bríndanos tus datos y nos comunicaremos contigo
+              <div className="flex flex-col gap-4 px-8 pt-8 pb-4">
+                <h2 className="max-w-sm mx-auto text-2xl md:text-3xl font-heading font-semibold text-center text-black mt-4">
+                  ¡Solicita información y asegura tu lugar!
                 </h2>
+                <p className='text-gray-600 text-center'>Recibirás el temario, fechas y precios en tu correo.</p>
               </div>
 
               {/* Scrollable Form Content */}
@@ -85,10 +86,6 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Campos ocultos de Formspree */}
                   <input type="hidden" name="_subject" value="🎓 Nueva Solicitud de Estudiante/Profesional - BioTraining" />
-                  {/* <input type="hidden" name="_template" value="table" />
-                  <input type="hidden" name="_format" value="html" />
-                  <input type="hidden" name="_email.title" value="Inscripción de Estudiante/Profesional" />
-                  <input type="hidden" name="_email.subtitle" value="Un estudiante o profesional está interesado en un curso" /> */}
 
                   {/* Full Name */}
                   <div>
@@ -103,9 +100,19 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                   <div>
                     <CustomInput
                       name="Correo Electrónico"
-                      placeholder="Correo electrónico"
+                      placeholder="Correo electrónico: Te enviaremos la información aquí"
                       type="email"
                       required
+                    />
+                  </div>
+
+                  {/* // Celular */}
+                  <div>
+                    <CustomInput
+                      name="Celular"
+                      placeholder="Celular: Para ayudarte vía WhatsApp"
+                      required
+                      minLength={7}
                     />
                   </div>
 
@@ -124,39 +131,19 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                     />
                   </div>
 
-                  {/* Speciality */}
-                  <div>
-                    <CustomInput
-                      name="Especialidad"
-                      placeholder="Indique su especialidad"
-                      required
-                      minLength={3}
-                    />
-                  </div>
-
-                  {/* Work Area */}
-                  <div>
-                    <CustomSelect
-                      name="Área de Trabajo"
-                      options={[
-                        { value: 'diagnostico', label: 'Diagnóstico' },
-                        { value: 'investigacion', label: 'Investigación' }
-                      ]}
-                      placeholder="Seleccione si trabaja en diagnóstico o investigación"
-                      value={areaTrabajo}
-                      onChange={(e) => setAreaTrabajo(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  {/* Course Interest */}
+                  {/* Course Interes */}
                   <div>
                     <CustomInput
                       name="Curso de Interés"
                       placeholder="Curso de interés (Se selecciona automáticamente)"
                       value={courseInterested}
+                      className='bg-gray-200'
                       readOnly
                     />
+                  </div>
+
+                  <div className='pt-2'>
+                    <p className='text-sm italic'>🔒 Tus datos están protegidos. No los compartimos con terceros.</p>
                   </div>
 
                   {/* Submit Button */}
@@ -166,7 +153,7 @@ const StudentContactModal: React.FC<StudentContactModalProps> = ({
                       disabled={state.submitting}
                       className="px-12 py-3 bg-gradient-to-r from-[#AB323D] to-[#E1525F] text-white font-semibold rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
                     >
-                      {state.submitting ? 'Enviando...' : 'Enviar'}
+                      {state.submitting ? 'Enviando...' : 'Quiero más información '}
                     </button>
                   </div>
                 </form>

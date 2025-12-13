@@ -4,10 +4,10 @@ import equiposImg from '../../assets/img/section-equipos-ultima-generacion.webp'
 
 const EquiposUltimaGeneracion: React.FC = () => {
   const items = [
-    'Material didáctico actualizado.',
-    'Soporte técnico.',
-    'Evaluación continua.',
-    'Sesiones atractivas en vivo.',
+    'Plataformas para amplificación/detección de ácidos nucleicos por PCR y qPCR.',
+    'Estaciones para extracción, cuantificación y valoración de ADN, ARN y proteínas.',
+    'Protocolos y espacios acondicionados según normativa vigente de bioseguridad.',
+    'Experiencias individuales para practicar con autonomía y seguridad.',
   ];
 
   return (
@@ -22,12 +22,12 @@ const EquiposUltimaGeneracion: React.FC = () => {
             className="space-y-6"
           >
             <h2 className="text-center sm:text-start text-[2rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold text-text-primary leading-tight">
-              Equipos de última generación
+              Entrena en laboratorios reales
             </h2>
 
             <p className="text-lg text-text-secondary leading-relaxed">
-              Practica y aprende usando equipos modernos, aplica lo aprendido en los laboratorios con la guía de nuestros expertos para que así obtengas un mayor aprendizaje.
-            </p>
+              Practica en instalaciones analíticas del sector salud, usando equipos modernos de diagnóstico molecular y
+              la guía directa de nuestros especialistas, para que apliques tus conocimientos en un entorno de trabajo auténtico.             </p>
 
             <ul className="space-y-4">
               {items.map((item, index) => (

@@ -18,7 +18,7 @@ export const siteConfig = {
     { name: '¿Por qué elegirnos?', href: '#beneficios' },
     { name: 'Cursos', href: '#cursos' },
     { name: 'Conócenos', href: '#conocenos' },
-    { name: 'Para empresas', href: '#empresas' },
+    { name: 'Para instituciones', href: '#empresas' },
     // contacto
     // { name: 'Contacto', href: '#contacto' }
   ],

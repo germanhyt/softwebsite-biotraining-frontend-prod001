@@ -16,25 +16,25 @@ const benefits: Benefit[] = [
   {
     id: '1',
     title: 'Docentes Expertos',
-    description: 'Profesionales reconocidos con sólida experiencia y reconocimiento en el sector salud y biotecnología.',
+    description: 'Profesionales con experiencia en investigación y diagnóstico molecular.',
     image: docentesImg,
   },
   {
     id: '2',
-    title: 'Certificación Reconocida',
-    description: 'Certificados avalados por instituciones con validez internacional.',
+    title: 'Contenido actualizado',
+    description: 'Herramientas y enfoques modernos utilizados en salud e investigación.',
     image: certificateImg,
   },
   {
     id: '3',
-    title: 'Casos Reales',
-    description: 'Metodología basada en casos clínicos y situaciones reales del entorno profesional.',
+    title: 'Aprendizaje aplicado',
+    description: 'Casos reales que te preparan para tomar decisiones en el entorno profesional.',
     image: casosRealesImg,
   },
   {
     id: '4',
-    title: 'Horarios Flexibles',
-    description: 'Modalidad virtual con acceso 24/7 y sesiones en vivo adaptadas a tu agenda.',
+    title: 'Modalidad flexible',
+    description: 'Clases en vivo y acompañamiento 24/7 para avanzar a tu ritmo.',
     image: horariosImg,
   },
 ];
@@ -51,7 +51,7 @@ const Benefits: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-heading font-semibold mb-4">
-            Tu capacitación en las mejores manos
+            Forma parte de la nueva generación de especialistas
           </h2>
         </motion.div>
 

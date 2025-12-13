@@ -87,11 +87,12 @@ const IncentivandoAprendizaje: React.FC = () => {
             className="md:col-span-7 px-4 md:px-0 text-center md:text-start space-y-6 "
           >
             <h2 className="text-[2.5rem] lg:text-[2.75rem] xl:text-[3rem] leading-[1.1] font-heading font-semibold text-text-primary ">
-              Incentivando el aprendizaje y la exigencia
+              Aprendizaje real para desafíos reales
             </h2>
 
-            <p className="text-lg text-text-secondary leading-relaxed md:max-w-sm">
-              En Biotraining, nuestro objetivo es impulsar tu desarrollo profesional preparando herramientas formativas de alta calidad.
+            <p className="text-lg text-text-secondary leading-relaxed md:max-w-lg">
+              En Biotraining potenciamos tu desarrollo profesional con entrenamientos que te retan e impulsan a
+              alcanzar tu mejor nivel, combinando guía experta, práctica aplicada y una comunidad que comparte tus objetivos.
             </p>
           </motion.div>
 

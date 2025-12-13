@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
             <div>
               <h3 className="font-heading font-semibold text-sm mb-4">Explora</h3>
               <ul className="space-y-3">
-                {/* Beneficios, Cursos, Conócenos, Cursos para empresas */}
+                {/* Beneficios, Cursos, Conócenos, Cursos para instituciones” */}
                 <li>
                   <a href="#beneficios" className="text-sm hover:text-primary-300 transition-colors">
                     ¿Por qué elegirnos?
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li><a href="#cursos" className="text-sm hover:text-primary-300 transition-colors">Cursos</a></li>
                 <li><a href="#conocenos" className="text-sm hover:text-primary-300 transition-colors">Conócenos</a></li>
-                <li><a href="#empresas" className="text-sm hover:text-primary-300 transition-colors">Para empresas</a></li>
+                <li><a href="#instituciones" className="text-sm hover:text-primary-300 transition-colors">Para instituciones</a></li>
               </ul>
             </div>
           </div>

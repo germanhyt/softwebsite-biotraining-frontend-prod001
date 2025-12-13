@@ -28,81 +28,8 @@ interface Course {
 const courses: Course[] = [
   {
     id: '1',
-    title: 'qPCR - EN EL DIAGNÓSTICO Y EN LA INVESTIGACIÓN',
-    description: 'Comprende el fundamento de la reacción en cadena de la Polimerasa en tiempo real (qPCR), una herramienta clave en la biología molecular moderna.',
-    image: qpcrImg,
-    isVirtual: true,
-    isLive: true,
-    detail: {
-      intro: 'Descubre cómo aprovechar el potencial de las bases de datos biológicas para la investigación científica y la innovación biomédica.',
-      learningTitle: '¿Qué aprenderás?',
-      sections: [
-        {
-          title: 'Fundamentos de la reacción de PCR',
-          items: [
-            'Etapas y componentes de la reacción de PCR end point. Visualización e interpretación del producto.',
-            'Problemas frecuentes y troubleshooting.',
-          ],
-        },
-        {
-          title: 'Adaptación a PCR Cuantitativa',
-          items: [
-            'PCR en d-point vs. qPCR: Cq como unidad informativa.',
-            'Fluorescencia como magnitud analítica.',
-            'Plots de fusión y análisis por curvas de melting.',
-          ],
-        },
-        {
-          title: 'Aplicaciones',
-          items: [
-            'Identificación de dominios conservados y motivos funcionales.',
-            'Exploración de la estructura tridimensional de proteínas.',
-            'Estrategias para la interpretación analítica de resultados.',
-          ],
-        },
-      ],
-      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
-    },
-  },
-  {
-    id: '2',
-    title: 'DISEÑO Y OPTIMIZACIÓN DE PRIMERS PARA LA PCR',
-    description: 'Aprende a diseñar y evaluar oligonucleótidos (primers) para experimentos de PCR y qPCR con precisión profesional.',
-    image: disenoImg,
-    isVirtual: true,
-    isLive: true,
-    detail: {
-      intro: 'Aprende a diseñar y evaluar oligonucleótidos (primers) para experimentos de PCR y qPCR con precisión profesional.',
-      learningTitle: '¿Qué aprenderás?',
-      sections: [
-        {
-          title: 'Estrategias de optimización avanzadas',
-          items: [
-            'Control de contaminación por gDNA: Diseño en unión exón - exón (Span en exón - exón junction) y diseño entre intrones (Span en intron).',
-            'Diseño diferencial entre isoformas.',
-          ],
-        },
-        {
-          title: 'Diseño asistido con herramientas on-line',
-          items: [
-            'Validación y optimización de primers con Primer - BLAST, Primer3 y Oligo Analyzer, para el análisis de especificidad y predicción de estructuras secundarias.',
-          ],
-        },
-        {
-          title: 'Casos de estudio y troubleshooting',
-          items: [
-            'Optimización y adaptación para variantes de la PCR (RT - PCR y qPCR). Diseño de tetraprimers para detección de SNPs. Ajuste de especificidad por PCR touchdown.',
-          ],
-        },
-      ],
-      certificateNote:
-        ' Se ortogará un certificado de finalización por 16 hrs. lectivas (1 crédito académico), emitido por Biotraining.'
-    },
-  },
-  {
-    id: '3',
-    title: 'EXPLORACIÓN Y ANÁLISIS CON BASES DE DATOS BIOLÓGICAS',
-    description: 'Descubre cómo aprovechar el potencial de las base de datos biológicas para la investigación científica y la innovación tecnológica.',
+    title: 'Exploración y análisis de bases de datos biológicas',
+    description: 'Analiza secuencias y anotaciones de ácidos nucleicos y proteínas usando bases de datos biológicas de acceso público.',
     image: exploracionImg,
     isVirtual: true,
     isLive: true,
@@ -138,9 +65,82 @@ const courses: Course[] = [
     },
   },
   {
+    id: '2',
+    title: 'PCR & qPCR Pro: fundamentos y aplicaciones',
+    description: 'Comprende los fundamentos de la PCR y la qPCR, y aprende a interpretar resultados para aplicaciones confiables en diagnóstico e investigación.',
+    image: qpcrImg,
+    isVirtual: true,
+    isLive: true,
+    detail: {
+      intro: 'Descubre cómo aprovechar el potencial de las bases de datos biológicas para la investigación científica y la innovación biomédica.',
+      learningTitle: '¿Qué aprenderás?',
+      sections: [
+        {
+          title: 'Fundamentos de la reacción de PCR',
+          items: [
+            'Etapas y componentes de la reacción de PCR end point. Visualización e interpretación del producto.',
+            'Problemas frecuentes y troubleshooting.',
+          ],
+        },
+        {
+          title: 'Adaptación a PCR Cuantitativa',
+          items: [
+            'PCR en d-point vs. qPCR: Cq como unidad informativa.',
+            'Fluorescencia como magnitud analítica.',
+            'Plots de fusión y análisis por curvas de melting.',
+          ],
+        },
+        {
+          title: 'Aplicaciones',
+          items: [
+            'Identificación de dominios conservados y motivos funcionales.',
+            'Exploración de la estructura tridimensional de proteínas.',
+            'Estrategias para la interpretación analítica de resultados.',
+          ],
+        },
+      ],
+      certificateNote: 'Se otorgará un certificado a nombre del Consejo Regional VIII Lima del Colegio de Biólogos del Perú por 16 hrs. Lectivas (1 crédito académico), y un certificado de finalización emitido por Biotraining.',
+    },
+  },
+  {
+    id: '3',
+    title: 'Diseño y optimización de primers para la PCR',
+    description: 'Domina estrategias de diseño de primers y adáptalos a distintos formatos de PCR para lograr amplificaciones específicas y eficientes.',
+    image: disenoImg,
+    isVirtual: true,
+    isLive: true,
+    detail: {
+      intro: 'Aprende a diseñar y evaluar oligonucleótidos (primers) para experimentos de PCR y qPCR con precisión profesional.',
+      learningTitle: '¿Qué aprenderás?',
+      sections: [
+        {
+          title: 'Estrategias de optimización avanzadas',
+          items: [
+            'Control de contaminación por gDNA: Diseño en unión exón - exón (Span en exón - exón junction) y diseño entre intrones (Span en intron).',
+            'Diseño diferencial entre isoformas.',
+          ],
+        },
+        {
+          title: 'Diseño asistido con herramientas on-line',
+          items: [
+            'Validación y optimización de primers con Primer - BLAST, Primer3 y Oligo Analyzer, para el análisis de especificidad y predicción de estructuras secundarias.',
+          ],
+        },
+        {
+          title: 'Casos de estudio y troubleshooting',
+          items: [
+            'Optimización y adaptación para variantes de la PCR (RT - PCR y qPCR). Diseño de tetraprimers para detección de SNPs. Ajuste de especificidad por PCR touchdown.',
+          ],
+        },
+      ],
+      certificateNote:
+        ' Se ortogará un certificado de finalización por 16 hrs. lectivas (1 crédito académico), emitido por Biotraining.'
+    },
+  },
+  {
     id: '4',
-    title: 'DIAGNÓSTICO MOLECULAR POC: AMPLIFICACIÓN ISOTÉRMICA E INTERPRETACIÓN RÁPIDA',
-    description: 'Explora las tecnologías de amplificación isotérmica (LAMP,RPA,NASBA) aplicadas al diagnóstico molecular en el punto de atención (POC).',
+    title: 'Diagnóstico molecular POC: técnicas isotérmicas',
+    description: 'Explora las tecnologías de amplificación isotérmica (LAMP, RPA, NASBA) aplicadas al diagnóstico en el punto de atención (POC).',
     image: diagnosticoImg,
     isVirtual: true,
     isLive: true,
@@ -227,8 +227,9 @@ const Courses: React.FC = () => {
           <h2 className="leading-[1.1] text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-4">
             Nuestros cursos especializados
           </h2>
-          <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-            Te ofrecemos 4 propuestas formativas para elevar tus habilidades.
+          <p className="text-text-secondary text-lg mx-auto">
+            Entrenamientos intensivos en fundamentos e interpretación de técnicas clave de diagnóstico molecular y
+            bioinformática.
           </p>
         </motion.div>
 
@@ -282,7 +283,7 @@ const Courses: React.FC = () => {
 
                   {/* Content */}
                   <div className="p-8 space-y-4">
-                    <h3 className="min-h-[7.2rem] lg:min-h-[8.2rem] 2xl:min-h-[7.2rem] pr-2 lg:pr-2 xl:pr-5 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.2rem]  font-semibold leading-[1.2] ">
+                    <h3 className="min-h-[5rem] lg:min-h-[4.5rem] 2xl:min-h-[4.5rem] pr-2 font-heading text-[1.5rem] lg:text-[1.2rem] xl:text-[1.25rem] 2xl:text-[1.25rem]  font-semibold leading-[1.2] ">
                       {course.title}
                     </h3>
                     {/* Tags */}
@@ -298,7 +299,7 @@ const Courses: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <p className="text-text-secondary text-sm leading-relaxed min-h-[6rem] lg:min-h-[8.5rem] 2xl:min-h-[6rem]">
+                    <p className="text-text-secondary text-sm leading-relaxed min-h-[6rem] lg:min-h-[6.5rem]  2xl:min-h-[6.5rem]">
                       {course.description}
                     </p>
                     <button

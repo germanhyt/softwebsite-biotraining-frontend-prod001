@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import iconGraduated from '../../assets/img/icon-graduate.webp';
-import iconInstructor from '../../assets/img/icon-isntructor.webp';
+
+import iconReconocidos from '../../assets/img/icon-reconocidos.webp';
+import iconCerificacion from '../../assets/img/icon-certificacion.webp';
+import iconCientifico from '../../assets/img/icon-cientifico.webp';
+
 
 interface StatItem {
     id: string;
@@ -55,33 +58,41 @@ const stats: StatItem[] = [
     {
         id: '1',
         icon: (
-            <img src={iconInstructor.src} alt="Instructor" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
+            <img src={iconCientifico.src} alt="Produccion Científica" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
         ),
-        title: '',
-        description: 'Instructores con entrevistas publicadas de alto impacto en su área, que respaldan el dominio de su materia.',
+        title: 'Docentes con producción científica',
+        description: 'Publicaciones en revistas de alto impacto que respaldan su experiencia.',
     },
     {
         id: '2',
         icon: (
-            <img src={iconGraduated.src} alt="Instructor" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
+            <img src={iconReconocidos.src} alt="Instituciones Reconocidas" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
         ),
-        title: '',
-        description: 'Staff de profesionales con formación internacional y una sólida trayectoria en sus especialidades.',
+        title: 'Trayectoria en instituciones reconocidas',
+        description: 'Experiencia en centros de referencia a nivel nacional e internacional.',
     },
     {
         id: '3',
         icon: (
             <div className="text-[2.75rem] sm:text-[2.5rem] font-bold">+100</div>
         ),
-        title: '',
-        description: 'Más de 100 alumnos ya capacitados con nuestra metodología.',
+        title: 'Profesionales capacitados',
+        description: 'Aprendizaje aplicado para decisiones reales.',
+    },
+    {
+        id: '4',
+        icon: (
+            <img src={iconCerificacion.src} alt="Cerfiicaciones" className="w-16 sm:w-14 h-16 sm:h-14 object-contain" />
+        ),
+        title: 'Certificación acreditada',
+        description: 'Aval de instituciones académicas y profesionales del sector.',
     },
 ];
 
 const ContamosCon: React.FC = () => {
     return (
         <section
-            className="mx-auto lg:max-w-5xl xl:max-w-6xl mt-16 md:mt-20"
+            className="mx-auto lg:max-w-5xl xl:max-w-[90rem] mt-16 md:mt-20"
         >
             <div className="ccontainer">
                 {/* Header */}
@@ -97,8 +108,8 @@ const ContamosCon: React.FC = () => {
                 </motion.div>
 
                 {/* Stats Grid - Positioned Absolutely at Bottom */}
-                <div className="relative md:-mb-52 lg:-mb-56">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="relative md:-mb-72">
+                    <div className="grid grid-cols-2  md:grid-cols-4 gap-4 sm:gap-4">
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={stat.id}
@@ -106,7 +117,7 @@ const ContamosCon: React.FC = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.15 }}
-                                className="bg-[#F2F2F2] rounded-3xl p-6 md:p-4 lg:p-[1.2rem] space-y-3  transition-shadow duration-300 relative z-10"
+                                className="hover:shadow-xl cursor-pointer bg-[#F2F2F2] rounded-3xl p-4 sm:p-6 md:p-4 lg:p-[1.2rem] space-y-3  transition-shadow duration-300 relative z-10"
                             >
                                 {/* Icon / Counter */}
                                 <div className="flex justify-start text-primary-900 ">
@@ -121,10 +132,19 @@ const ContamosCon: React.FC = () => {
                                     )}
                                 </div>
 
-                                {/* Content */}
-                                <p className="text-text-secondar font-medium text-[1.25rem] md:text-sm xl:text-base leading-relaxed">
-                                    {stat.description}
-                                </p>
+                                <div className='flex flex-col gap-2'>
+                                    {/* Title */}
+                                    <h3
+                                        className="min-h-[2.5rem] text-[1rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.35rem] sm:leading-[1.45rem] font-semibold text-text-primary-900"
+                                    >
+                                        {stat.title}
+                                    </h3>
+
+                                    {/* Content */}
+                                    <p className="text-text-secondary font-medium text-[0.875rem] md:text-sm xl:text-base leading-[1.25rem] sm:leading-relaxed">
+                                        {stat.description}
+                                    </p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>

@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
                                         textShadow: '0 2px 10px rgba(0,0,0,0.1)'
                                     }}
                                 >
-                                    Impulsa tu carrera en biotecnología con formación de nivel profesional
+                                    Desarrolla las competencias que te abrirán nuevas oportunidades en investigación y salud
                                 </motion.h1>
 
                                 <motion.p
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                                     transition={{ delay: 0.4 }}
                                     className="max-w-[24rem] md:max-w-xl 2xl:max-w-[32rem] text-[1rem] lg:text-lg xl:text-xl leading-relaxed text-white/95 font-sans"
                                 >
-                                    Potencia tus conocimientos con cursos especializados, docentes expertos y certificación reconocida.
+                                    Formación profesional en biología molecular, bioinformática y análisis de datos
                                 </motion.p>
                             </div>
 

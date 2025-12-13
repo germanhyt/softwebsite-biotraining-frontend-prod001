@@ -4,10 +4,10 @@ import metodologiaImg from '../../assets/img/section-metodologia-garantiza-exito
 
 const MetodologiaExito: React.FC = () => {
   const items = [
-    'Certificación internacional.',
-    'Certificación avalada por el colegio de biólogos del Perú.',
-    'Certificación a nombre de Biotraining.',
-    'Metodología basada en casos reales',
+    'Aprendizaje centrado en tareas reales del trabajo en laboratorio.',
+    'Evaluaciones continuas y acompañamiento docente para reforzar tu progreso.',
+    'Integración de habilidades experimentales y análisis de datos ómicos.',
+    'Competencias técnicas desarrolladas y validadas durante todo el entrenamiento.',
   ];
 
   return (
@@ -40,7 +40,8 @@ const MetodologiaExito: React.FC = () => {
             </h2>
 
             <p className="text-lg text-text-secondary leading-relaxed">
-              Nuestro enfoque pedagógico combina la teoría más actualizada con la práctica profesional, garantizando un aprendizaje efectivo y aplicable.
+              En Biotraining aprendemos haciendo: combinamos teoría actualizada con práctica guiada para
+              transformar tus conocimientos en habilidades técnicas aplicables desde el primer día.
             </p>
 
             <ul className="space-y-4">

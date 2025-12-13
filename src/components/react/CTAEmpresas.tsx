@@ -43,17 +43,17 @@ const CTAEmpresas: React.FC = () => {
             >
               <div className='space-y-4 pr-5'>
                 <h2 className="text-[1.5rem] sm:text-[2.5rem] xl:text-[3rem] leading-[1.2] font-heading font-semibold ">
-                  Capacita a tu equipo y mejora la eficiencia de tu empresa
+                  Capacita a tu equipo y fortalece la calidad de tus protocolos
                 </h2>
 
                 <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-white/90 max-w-xl lg:max-w-2xl">
-                  Formación integral para que tu equipo domine herramientas, equipos y procedimientos clave en salud y biotecnología, garantizando calidad y eficiencia operativa.
-                </p>
+                  Entrenamientos diseñados para que tu equipo domine técnicas, equipamiento y procedimientos clave
+                  en biología molecular y diagnóstico. El resultado: calidad, bioseguridad y eficiencia en tus protocolos.                 </p>
               </div>
 
               <div className="pt-2 lg:pt-4">
                 <Button onClick={() => setIsEnterpriseModalOpen(true)} variant="primary">
-                  Más Información
+                  Solicitar una propuesta para mi institución
                 </Button>
               </div>
             </motion.div>

@@ -1,18 +1,22 @@
-import React from 'react';
 import { useForm } from '@formspree/react';
 import Swal from 'sweetalert2';
 import Button from './Button';
 import CustomInput from './CustomInput';
 import CustomSelect from './CustomSelect';
 import CustomTextarea from './CustomTextarea';
+import { useEffect, useRef, useState } from 'react';
 
 const Conversemos: React.FC = () => {
+
+  // ATTRIBUTES
   const [state, handleSubmit, reset] = useForm(import.meta.env.PUBLIC_FORMSPREE_CONVERSEMOS || '');
-  const hasShownSuccess = React.useRef(false);
+  const hasShownSuccess = useRef(false);
+  const [perfil, setPerfil] = useState('');
+  const [habilidadFortalecer, setHabilidadFortalecer] = useState('');
 
-  const [formatoPreferencia, setFormatoPreferencia] = React.useState('');
 
-  React.useEffect(() => {
+  // CUSTOM HOOKS
+  useEffect(() => {
     if (state.succeeded && !hasShownSuccess.current) {
       hasShownSuccess.current = true;
       Swal.fire({
@@ -25,7 +29,6 @@ const Conversemos: React.FC = () => {
         }
       }).then(() => {
         reset();
-        setFormatoPreferencia('');
         hasShownSuccess.current = false;
       });
     }
@@ -50,22 +53,19 @@ const Conversemos: React.FC = () => {
             {/* Left Content - Text */}
             <div className="text-white space-y-6 lg:sticky lg:top-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold">
-                Conversemos
+                Diseñemos juntos tu próximo entrenamiento
               </h2>
               <p className="text-white/80 text-base lg:text-lg leading-relaxed">
-                Completa este breve formulario y ayudanos a conocer tus intereses. Tu respuesta nos ayudará a enfocar los contenidos de nuestros cursos y capacitaciones para que se alineen mejor con tus objetivos y perfil profesional. </p>
+                Cuéntanos qué habilidad quieres fortalecer. Te ayudaremos a encontrar la capacitación ideal para tus
+                objetivos en biología molecular, laboratorio o bioinformática.
+              </p>
             </div>
 
             {/* Right Content - Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Campos ocultos de Formspree */}
               <input type="hidden" name="_subject" value="💬 Nuevo Mensaje del Formulario Conversemos - BioTraining" />
-              {/* <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_format" value="html" />
-              <input type="hidden" name="_email.title" value="Nueva Solicitud de Conversación" />
-              <input type="hidden" name="_email.subtitle" value="Un profesional está interesado en conocer más sobre nuestros cursos" /> */}
 
-              {/* Name */}
               <div>
                 <CustomInput
                   name="Nombres y Apellidos"
@@ -84,58 +84,45 @@ const Conversemos: React.FC = () => {
                 />
               </div>
 
-              {/* Specialty */}
-              <div>
-                <CustomInput
-                  name="Especialidad"
-                  placeholder="Especialidad"
-                  required
-                  minLength={2}
-                />
-              </div>
-
-              {/* Occupation */}
-              <div>
-                <CustomInput
-                  name="Ocupación Actual"
-                  placeholder="¿Cuál es tu ocupación actual?"
-                  required
-                  minLength={3}
-                />
-              </div>
-
-              {/* Preference */}
+              {/* // perfil con select Estudiante, Profesional */}
               <div>
                 <CustomSelect
-                  name="Preferencia de Formato"
+                  name="Perfil"
                   options={[
-                    { value: 'presencial', label: 'Presencial' },
-                    { value: 'virtual_vivo', label: 'Virtual en vivo' },
-                    { value: 'virtual_grabado', label: 'Virtual sesiones grabadas' }
+                    { value: 'estudiante', label: 'Estudiante' },
+                    { value: 'profesional', label: 'Profesional' },
                   ]}
-                  placeholder="¿Cuál es tu preferencia respecto al formato de un curso/capacitación?"
-                  value={formatoPreferencia}
-                  onChange={(e) => setFormatoPreferencia(e.target.value)}
+                  value={perfil}
+                  placeholder="¿Cuál es tu perfil?"
+                  onChange={(e) => setPerfil(e.target.value)}
                   required
                 />
               </div>
 
-              {/* Modality */}
               <div>
-                <CustomTextarea
-                  name="Preferencia de Modalidad"
-                  placeholder="¿Cuál es tu preferencia respecto a la modalidad?"
+                <CustomSelect
+                  name="Habilidad a Fortalecer"
+                  options={[
+                    { value: 'diagnostico_molecular', label: 'Diagnóstico molecular' },
+                    { value: 'pcr_qpcr', label: 'PCR / qPCR' },
+                    { value: 'diseno_primers', label: 'Diseño de primers' },
+                    { value: 'bioinformatica_analisis_datos', label: 'Bioinformática y análisis de datos biológicos' },
+                    { value: 'tecnicas_isotermicas_poc', label: 'Técnicas isotérmicas (POC)' },
+                    { value: 'necesito_orientacion', label: 'No estoy seguro/a - necesito orientación' }
+                  ]}
+                  placeholder="¿Qué habilidad te gustaría fortalecer?"
+                  value={habilidadFortalecer}
+                  onChange={(e) => setHabilidadFortalecer(e.target.value)}
                   required
-                  minLength={10}
-                  rows={2}
                 />
               </div>
+
 
               {/* Experience */}
               <div>
                 <CustomTextarea
-                  name="Experiencia Práctica Deseada"
-                  placeholder="¿Qué habilidad te gustaría fortalecer en una próxima capacitación?"
+                  name="Objetivo"
+                  placeholder="Cuéntanos tu objetivo (texto breve)"
                   required
                   minLength={15}
                   rows={4}
@@ -147,7 +134,7 @@ const Conversemos: React.FC = () => {
 
               <div className="flex justify-end pt-2">
                 <Button type="submit" variant="primary" disabled={state.submitting}>
-                  {state.submitting ? 'Enviando...' : 'Enviar'}
+                  {state.submitting ? 'Enviando...' : 'Enviar y continuar'}
                 </Button>
               </div>
             </form>
