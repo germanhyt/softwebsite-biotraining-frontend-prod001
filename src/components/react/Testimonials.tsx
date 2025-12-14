@@ -152,7 +152,7 @@ const Testimonials: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
-              className="absolute top-1/2 left-0 right-0 z-[99] flex justify-between items-center"
+              className="absolute hidden top-1/2 left-0 right-0 z-[99] justify-between items-center"
             >
               <button
                 className="button-custom-prev"

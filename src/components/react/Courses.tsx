@@ -222,7 +222,7 @@ const Courses: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16  mx-auto "
+          className="text-center mb-16 mx-auto "
         >
           <h2 className="leading-[1.1] text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-heading font-semibold mb-4">
             Nuestros cursos especializados
@@ -334,8 +334,8 @@ const Courses: React.FC = () => {
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
               className="
-                absolute top-1/2 left-0 right-0 z-[5]
-                flex md:hidden justify-between items-center
+                absolute top-1/2 left-0 sm:left-2 right-0 sm:right-2 z-[5]
+                flex  justify-between items-center
                 "
             >
               <button
