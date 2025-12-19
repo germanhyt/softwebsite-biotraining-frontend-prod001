@@ -52,7 +52,7 @@ const CTAEmpresas: React.FC = () => {
               </div>
 
               <div className="pt-2 lg:pt-4">
-                <Button onClick={() => setIsEnterpriseModalOpen(true)} variant="primary">
+                <Button onClick={() => setIsEnterpriseModalOpen(true)} variant="primary" className=' mr-5'>
                   Solicitar una propuesta para mi institución
                 </Button>
               </div>
