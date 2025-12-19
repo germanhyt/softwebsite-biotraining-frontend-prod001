@@ -47,10 +47,22 @@ const testimonials: Testimonial[] = [
   {
     id: '5',
     name: 'Joel Torres',
-    role: 'PCH (Lima)',
+    role: 'UPCH (Lima)',
     content:
       'Me ayudó a comprender mejor las problemáticas asociadas a técnicas como PCR y qPCR, mejorando los experimentos que realizaba en el laboratorio.',
   },
+  {
+    id: '6',
+    name: 'Elmer Meléndez',
+    role: 'UNT (Trujillo)',
+    content: 'La calidad de la enseñanza fue excelente. A pesar de haber llevado solo las clases teóricas, pude comprender claramente los contenidos. El instructor demostró gran vocación docente y dominio del tema, lo que facilitó el aprendizaje. Una experiencia muy satisfactoria.'
+  },
+  {
+    id: '7',
+    name: 'Luis Alcántara',
+    role: 'Laboratorio  Vetsupport (Lima)',
+    content: 'Los contenidos fueron explicados de manera clara y ordenada, lo que me permitió comprender sin dificultad todos los temas abordados. Me siento muy agradecido por la calidad de la enseñanza recibida.'
+  }
 ];
 
 const BREAKPOINTS = {
