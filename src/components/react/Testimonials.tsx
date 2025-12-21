@@ -127,13 +127,15 @@ const Testimonials: React.FC = () => {
             className="swiper pb-12"
           >
             {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={testimonial.id}>
+              <SwiperSlide key={testimonial.id}
+                className='pb-10'
+              >
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex flex-col min-h-[25.5rem] bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 py-6 xl:py-8 mx-4 md:mx-0 px-8 xl:px-6 relative border border-gray-300 h-full"
+                  className="flex flex-col min-h-[25.5rem] lg:min-h-[27.5rem] 2xl:min-h-[25.5rem] bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 py-6 xl:py-8 mx-4 md:mx-0 px-8 xl:px-6 relative border border-gray-300 h-full"
                 >
                   {/* Quote Icon - Large at top left */}
                   <div className="mb-4 space-y-4">
